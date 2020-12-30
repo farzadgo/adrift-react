@@ -1,0 +1,30 @@
+.sub-header {
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+}
+.sub-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--font-med);
+}
+.sub-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  min-height: 48px;
+  min-width: 48px;
+}
+.sub-link {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  min-width: 48px;
+}
+.sub-link.hidden {
+  visibility: hidden;
+}

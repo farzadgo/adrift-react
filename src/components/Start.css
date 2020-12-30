@@ -1,0 +1,32 @@
+.start-page {
+  padding: 0 20px;
+}
+.input {
+  display: block;
+  height: 60vh;
+  width: 100%;
+  margin-bottom: var(--padding-one);
+  border: 2px solid #BEBEBE;
+  padding: 10px;
+  resize: none;
+  overflow-y: auto;
+  font-size: 0.9em;
+  font-family: 'Consolas', monospace;
+  line-height: 1.6em;
+}
+.input:focus {
+  outline: none;
+  border: 2px solid var(--my-pink);
+}
+.lost-btn {
+  cursor: pointer;
+  border: none;
+  height: var(--btn-height);
+  width: 100%;
+  border-radius: calc(var(--btn-height) * 0.5);
+  background-color: rgb(42, 39, 38);
+  color: var(--my-white);
+  font-family: var(--main-font);
+  font-size: var(--font-big);
+  font-weight: bold;
+}

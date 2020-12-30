@@ -1,25 +1,43 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Adrift",
+  "name": "Adrift web app",
+  "description": "",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "64x64",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "/icons/logo128.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "128x128"
     },
     {
-      "src": "logo512.png",
+      "src": "/icons/logo96.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "96x96"
+    },
+    {
+      "src": "/icons/logo96_mask.png",
+      "type": "image/png",
+      "size": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/logo32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/icons/logo16.png",
+      "type": "image/png",
+      "sizes": "16x16"
     }
   ],
-  "start_url": ".",
+  "start_url": "./start",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#2A2726",
+  "background_color": "#D8DADC",
+  "orientation": "portrait"
 }
