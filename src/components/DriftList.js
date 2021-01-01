@@ -5,6 +5,28 @@ import SubHeader from './SubHeader';
 import './DriftList.css';
 
 
+const DriftListItem = ({ title, time, id }) => {
+    
+  const iconProps = {
+    display: 'block',
+    color: 'rgb(36, 36, 36)',
+    size: 56,
+    strokeWidth: 1
+  }
+
+  return (
+    <div className="drift-cover">
+      <ul className="cover-list">
+        <li>{title}</li>
+        <li>{time}</li>
+      </ul>
+      <Link to={`/${id}`} className="cover-arrow">
+          <Icon.ChevronRight {...iconProps}/>
+      </Link>
+    </div>
+  )
+}
+
 const DriftList = ({ drifts, setToggle }) => {
 
   const info = { title: 'DriftList' };
@@ -13,28 +35,6 @@ const DriftList = ({ drifts, setToggle }) => {
     size: 40,
     strokeWidth: 1
   };
-
-  const DriftListItem = ({ title, time, id }) => {
-    
-    const iconProps = {
-      display: 'block',
-      color: 'rgb(36, 36, 36)',
-      size: 56,
-      strokeWidth: 1
-    }
-
-    return (
-      <div className="drift-cover">
-        <ul className="cover-list">
-          <li>{title}</li>
-          <li>{time}</li>
-        </ul>
-        <Link to={`/${id}`} className="cover-arrow">
-            <Icon.ChevronRight {...iconProps}/>
-        </Link>
-      </div>
-    )
-  }
 
 
   return (

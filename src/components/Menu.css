@@ -5,17 +5,29 @@
   height: 100%;
   top: 0;
   z-index: 2;
+  padding: 0 var(--padding-one);
   background-color: rgb(41, 39, 38);
   overflow-y: auto;
 }
 .menu.show {
   display: block;
 }
-.menu-close {
-  text-align: right;
+/* ----------------------------------- */
+.menu-header {
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
 }
+.menu-right-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  min-height: 48px;
+  min-width: 48px;
+}
+/* ----------------------------------- */
 .menu-item {
-  padding: 0 var(--padding-one);
   color: white;
   margin-bottom: 10px;
 }
@@ -26,11 +38,11 @@
   color: white;
   font-family: inherit;
   font-weight: bold;
-  display: inline-block;
   font-size: var(--font-big);
   cursor: pointer;
+  padding: 0 10px;
 }
-.menu-title[data-before]::before {
+/* .menu-title[data-before]::before {
   font-family: "Material Icons";
   content: attr(data-before) "";
   font-size: 36px;
@@ -38,7 +50,7 @@
   position: relative;
   top: 0.3em;
   padding-right: 10px;
-}
+} */
 .menu-content {
   font-size: var(--font-med);
   padding-top: calc(var(--padding-one) * 1.4);

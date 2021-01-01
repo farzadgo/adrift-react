@@ -32,9 +32,13 @@ const DriftView = ({ drifts, setToggle, passData }) => {
     return (
       <>
         <p>{drift.date}</p>
+        <br/>
         <p>{drift.dest}</p>
+        <br/>
         <p>{drift.srcSteps}</p>
+        <br/>
         <p>{drift.lstSteps}</p>
+        <br/>
       </>
     )
   }

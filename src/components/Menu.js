@@ -1,9 +1,26 @@
 import React from "react";
 import './Menu.css';
 import * as Icon from 'react-feather';
+// import { withRouter } from "react-router-dom";
+
+const MenuHeader = ({ setToggle }) => {
+  const iconProps = {
+    color: 'rgb(36, 36, 36)',
+    size: 36,
+    strokeWidth: 1,
+    color: "white"
+  }  
+  return (
+    <div className="menu-header">
+      <button className="menu-right-btn" onClick={setToggle}>
+        <Icon.X {...iconProps}/>
+      </button>
+    </div>
+  )
+}
 
 
-const Menu = (props) => {
+const Menu = ({ display, setToggle }) => {
 
   const showContent = (e) => {
     // e.preventDefault();
@@ -11,11 +28,11 @@ const Menu = (props) => {
     const siblings = getSiblings(e.target.parentNode);
     if (content.hidden === true) {
       content.hidden = false;
-      siblings.forEach(e => e.style.display = "none")
-      e.target.dataset.before = "<";
+      // siblings.forEach(e => e.style.display = "none")
+      e.target.dataset.before = "";
     } else {
       content.hidden = true;
-      siblings.forEach(e => e.style.display = "block")
+      // siblings.forEach(e => e.style.display = "block")
       e.target.dataset.before = "";
     }
   }
@@ -33,11 +50,9 @@ const Menu = (props) => {
   }
 
   return (
-    <div className={props.display ? "menu show" : "menu"}>
+    <div className={display ? "menu show" : "menu"}>
 
-      <div className="menu-close">
-        <button className="btn" onClick={props.setToggle}><Icon.X/></button>
-      </div>
+      <MenuHeader setToggle={setToggle}/>
 
       <div className="menu-item">
         <button className="menu-title" onClick={showContent} data-before="">instructions</button>

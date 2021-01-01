@@ -69,7 +69,7 @@ const App = () => {
           </Route>
 
           <Route path="/:id" exact>
-            <DriftView drifts={drifts} setDrifts={setDrifts} passData={deleteDrift} setToggle={toggler}/>
+            <DriftView drifts={drifts} passData={deleteDrift} setToggle={toggler}/>
           </Route>
 
         </Switch>
