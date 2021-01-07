@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import SubHeader from './SubHeader';
+import Sorry from './Sorry';
 import './DriftView.css';
 import * as Icon from 'react-feather';
 
@@ -15,32 +16,47 @@ const DriftView = ({ drifts, setToggle, passData }) => {
   // BE AWARE ID CREATED IN DRIFT CONSTRUTOR (drift.id)
   // MIGHT BE A "number" SO "===" TURNS FALSE AS REACT
   // CONVERTS "{ id }" TO STRING
+
+  // IMPORTANT
   if (drifts.length !== 0) {
     drift = drifts.filter(item => item.id === id)[0];
   }
-  
-  const Sorry = () => {
+
+
+  const StepsList = ({ drift }) => {
+    // const [done, setDone] = useState(drift.completed);
+    const length = drift.completed.length;
+
     return (
-      <>
-        <p>Sorry :(</p>
-        <p>Please go back</p>
-      </>
+      <div className="preview">
+        <p>Forget about {drift.destination}.. {drift.completed.filter(e => e !== false).length}/{length}</p>
+
+        <ul className="preview-item list">
+          {drift.orgSteps.map((e, i) => <li className="preview-list-item"> {drift.orgSteps[i]} </li>)}
+        </ul>
+
+        <ul className="preview-item list">
+          {drift.newSteps.map((e, i) => <li className="preview-list-item"> {drift.newSteps[i]} </li>)}
+        </ul>
+
+      </div>
     )
   }
 
-  const StepsList = ({ drift }) => {
+  const ProceedBtn = () => {
+    const iconProps = {
+      color: 'white',
+      size: 40,
+      strokeWidth: 1
+    }
+    const handleClick = () => {
+      console.log('proceed clicked');
+    }
     return (
-      <>
-        <p>{drift.date}</p>
-        <br/>
-        <p>{drift.dest}</p>
-        <br/>
-        <p>{drift.srcSteps}</p>
-        <br/>
-        <p>{drift.lstSteps}</p>
-        <br/>
-      </>
-    )
+      <button type="button" onClick={handleClick} className="">
+        <Icon.Play {...iconProps}/>
+      </button>
+    );
   }
 
   const DeleteBtn = ({ id }) => {
@@ -55,7 +71,7 @@ const DriftView = ({ drifts, setToggle, passData }) => {
       history.push("/");
     }
     return (
-      <button type="button" onClick={handleClick} className="lost-btn">
+      <button type="button" onClick={handleClick} className="">
         <Icon.Trash {...iconProps}/>
       </button>
     );
@@ -67,6 +83,7 @@ const DriftView = ({ drifts, setToggle, passData }) => {
       <SubHeader title={info.title} setToggle={setToggle}/>
       {drift ? <StepsList drift={drift}/> : <Sorry />}
       {drift ? <DeleteBtn id={drift.id}/> : null }
+      {drift ? <ProceedBtn /> : null }
     </div>
   )
 }

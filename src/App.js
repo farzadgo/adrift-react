@@ -24,6 +24,7 @@ const App = () => {
   const toggler = () => setToggle(prev => !prev);
 
   const addDrift = (theNewDrift) => {
+    console.log(theNewDrift);
     db.drifts.add(theNewDrift).then(async () => {
       let allDrifts = await db.drifts.toArray();
       setDrifts(allDrifts);

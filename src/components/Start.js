@@ -12,19 +12,23 @@ const Start = ({ setToggle, passData }) => {
   const info = { title: 'Start' }
   let newDrift;
 
-  const Drift = function(id, date, dest, stp, stp_, qs, rs) {
+  // DRIFT CONSTRUCTOR
+  const Drift = function(id, date, dest, stp, stp_, qs, rs, cd) {
     this.id = id;
     this.date = date;
-    this.dest = dest;
-    this.srcSteps = stp;
-    this.lstSteps = stp_;
+    this.destination = dest;
+    this.orgSteps = stp;
+    this.newSteps = stp_;
     this.questions = qs;
-    this.records = rs
+    this.records = rs;
+    this.completed = cd;
   }
-
+  // DRIFT ADDER
   const addDrift = (inp) => {
     const dirObj = deconstructor(inp);
     if (!!Object.values(dirObj).every(item => item)) {
+      // console.log(dirObj.orgDirs);
+      // const driftLength = dirObj.orgDirs
       // ID
       // data.drifts.length == 0 ? ID = 0 : ID = data.drifts[data.drifts.length - 1].id + 1;
       let id = uuidv4();
@@ -34,16 +38,20 @@ const Start = ({ setToggle, passData }) => {
       // DEST
       let dest = dirObj.destination;
       // ORIGINAL STEPS
-      let sourceSteps = dirObj.orgDirs.dirStr;
+      let sourceSteps = dirObj.orgDirs;
       // NEW STEPS
-      let lostSteps = dirObj.newDirs.dirStr;
+      let lostSteps = dirObj.newDirs;
       // QUESTIONS
       let questions = dirObj.questions;
       // RECORDINGS
       let recordings = [];
-      recordings.length = dirObj.newDirs.dirArr.length;
-  
-      newDrift = new Drift(id, date, dest, sourceSteps, lostSteps, questions, recordings);
+      // V2. WE CAN RECORD AS MUCH AS WE LIKE
+      // recordings.length = dirObj.newDirs.dirArr.length;
+      // COMPLETED
+      // let completed = new Array(dirObj.orgDirs.length);
+      let completed = new Array(dirObj.orgDirs.length).fill(false);
+
+      newDrift = new Drift(id, date, dest, sourceSteps, lostSteps, questions, recordings, completed);
 
       // /*>> adrift v1 (alpha) <<*/
       // data.drifts.push(newDrift);
@@ -82,7 +90,6 @@ const Start = ({ setToggle, passData }) => {
       </button>
     );
   }
-
 
   return (
     <div className="start-page">

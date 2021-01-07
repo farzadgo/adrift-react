@@ -201,8 +201,8 @@ export const deconstructor = (inp) => {
   
   return {
     destination: destination,
-    orgDirs: orgDirs,
-    newDirs: newDirs,
+    orgDirs: orgDirs.dirStr,
+    newDirs: newDirs.dirStr,
     questions: questions,
   }
 }
