@@ -1,0 +1,62 @@
+.drift-overview {
+  /* position: relative; */
+  height: calc(100% - var(--btn-height) - var(--padding-one));
+  padding: 0 20px;
+  margin-bottom: var(--padding-one);
+  overflow-y: auto;
+}
+/* --------------------------------------- */
+.steps-title {
+  margin-bottom: var(--padding-one);
+}
+.steps {
+  display: flex;
+  /* justify-content: space-between; */
+  margin-bottom: var(--padding-one);
+  /* overflow-y: auto; */
+}
+.steps-list {
+  font-size: var(--font-size-sml);
+  list-style: none;
+  margin-right: var(--padding-one);
+  /* width: 46%; */
+}
+.steps-list.new {
+  color: crimson;
+}
+.steps-list.box {
+  margin-left: auto;
+  margin-right: 0;
+}
+.steps-list-item {
+  line-height: 1em;
+  height: 60px;
+}
+/* .preview-list-item .box {
+  display: block;
+  position: relative;
+  top: -0.5rem;
+} */
+/* .preview-list-item .empty {
+  color: #BEBEBE;
+} */
+
+/* ------------------------------------------ */
+.proceed-btn {
+  width: calc(100% -  var(--btn-height) - var(--padding-one));
+  float: right;
+  background-color: var(--my-black);
+  color: var(--my-white);
+}
+.proceed-btn:hover {
+  background-color: var(--my-pink);
+}
+.delete-btn {
+  width: var(--btn-height);
+  float: left;
+  background-color: var(--my-black);
+  color: var(--my-white);
+}
+.delete-btn:hover {
+  background-color: crimson;
+}

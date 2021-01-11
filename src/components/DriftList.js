@@ -28,7 +28,7 @@ const DriftList = ({ drifts, setToggle }) => {
           time={item.date}
           completed={item.completed}/>
       )}
-      <Link to="/start" className="add-btn">
+      <Link to="/start" className="btn-big add-btn">
         <Icon.Plus {...iconProps}/>
       </Link>
     </div>

@@ -3,7 +3,8 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import Dexie from 'dexie';
 import DriftList from "./components/DriftList";
 import Start from "./components/Start";
-import DriftView from "./components/DriftView";
+import Overview from "./components/Overview";
+import Step from "./components/Step";
 import Menu from "./components/Menu";
 import './App.css';
 
@@ -66,11 +67,15 @@ const App = () => {
           </Route>
 
           <Route path="/start" exact>
-            <Start passData={addDrift} setToggle={toggler}/>
+            <Start addDrift={addDrift} setToggle={toggler}/>
           </Route>
 
           <Route path="/:id" exact>
-            <DriftView drifts={drifts} passData={deleteDrift} setToggle={toggler}/>
+            <Overview drifts={drifts} deleteDrift={deleteDrift} setToggle={toggler}/>
+          </Route>
+
+          <Route path="/:id/:step" exact>
+            <Step drifts={drifts} setToggle={toggler}/>
           </Route>
 
         </Switch>

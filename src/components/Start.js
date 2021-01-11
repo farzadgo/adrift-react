@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useHistory } from 'react-router-dom';
 
 
-const Start = ({ setToggle, passData }) => {
+const Start = ({ setToggle, addDrift }) => {
 
   const [inputValue, setInputValue] = useState('');
   const info = { title: 'Start' }
@@ -24,7 +24,7 @@ const Start = ({ setToggle, passData }) => {
     this.completed = cd;
   }
   // DRIFT ADDER
-  const addDrift = (inp) => {
+  const createDrift = (inp) => {
     const dirObj = deconstructor(inp);
     if (!!Object.values(dirObj).every(item => item)) {
       // console.log(dirObj.orgDirs);
@@ -62,7 +62,7 @@ const Start = ({ setToggle, passData }) => {
       // setDrifts([...drifts, newDrift]);
 
       /*>> adrift db version (beta) <<*/
-      passData(newDrift);
+      addDrift(newDrift);
       setInputValue("");
 
     } else {
@@ -76,8 +76,7 @@ const Start = ({ setToggle, passData }) => {
   const LostBtn = () => {
     const history = useHistory();
     const handleClick = () => {
-      addDrift(inputValue);
-      
+      createDrift(inputValue);
       if (newDrift) {
         history.push(`/${newDrift.id}`);
       } else {
@@ -85,14 +84,18 @@ const Start = ({ setToggle, passData }) => {
       }
     }
     return (
-      <button type="button" onClick={handleClick} className="lost-btn" disabled={!inputValue ? true : false}>
+      <button 
+        type="button"
+        onClick={handleClick}
+        className="btn-big lost-btn"
+        disabled={!inputValue ? true : false}>
         Get Lost
       </button>
     );
   }
 
   return (
-    <div className="start-page">
+    <div className="start">
       <SubHeader title={info.title} setToggle={setToggle}/>
       <textarea
         value={inputValue}
@@ -101,10 +104,9 @@ const Start = ({ setToggle, passData }) => {
         placeholder={"Type here..."}
       />
       <LostBtn />
-      {/* <Link to="/" onClick={() => addDrift(inputValue)}>
+      {/* <Link to="/" onClick={() => createDrift(inputValue)}>
         <Icon.ChevronRight />
       </Link> */}
-
     </div>
   )
 }

@@ -38,3 +38,15 @@ button[disabled] {
   color: #9c9c9c;
   background: #f0f0f0;
 }
+
+.btn-big {
+  cursor: pointer;
+  border: none;
+  height: var(--btn-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--main-font);
+  font-size: var(--font-big);
+  font-weight: bold;
+}

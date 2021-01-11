@@ -7,10 +7,6 @@
   height: 60px;
 }
 .add-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: var(--btn-height);
   width: var(--btn-height);
   position: absolute;
   right: var(--padding-one);

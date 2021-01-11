@@ -1,5 +1,5 @@
-.start-page {
-  padding: 0 20px;
+.start {
+  padding: 0 var(--padding-one);
 }
 .input {
   display: block;
@@ -19,14 +19,8 @@
   border: 2px solid var(--my-pink);
 }
 .lost-btn {
-  cursor: pointer;
-  border: none;
-  height: var(--btn-height);
   width: 100%;
   border-radius: calc(var(--btn-height) * 0.5);
-  background-color: rgb(42, 39, 38);
+  background-color: var(--my-black);
   color: var(--my-white);
-  font-family: var(--main-font);
-  font-size: var(--font-big);
-  font-weight: bold;
 }
