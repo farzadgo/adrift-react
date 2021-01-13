@@ -1,24 +1,23 @@
-.drift-overview {
+.overview {
   /* position: relative; */
   height: calc(100% - var(--btn-height) - var(--padding-one));
-  padding: 0 20px;
   margin-bottom: var(--padding-one);
   overflow-y: auto;
 }
 /* --------------------------------------- */
 .steps-title {
-  margin-bottom: var(--padding-one);
+  margin-bottom: var(--space-one);
 }
 .steps {
   display: flex;
   /* justify-content: space-between; */
-  margin-bottom: var(--padding-one);
+  margin-bottom: var(--space-one);
   /* overflow-y: auto; */
 }
 .steps-list {
-  font-size: var(--font-size-sml);
+  font-size: var(--sm);
   list-style: none;
-  margin-right: var(--padding-one);
+  margin-right: var(--space-one);
   /* width: 46%; */
 }
 .steps-list.new {
@@ -43,19 +42,19 @@
 
 /* ------------------------------------------ */
 .proceed-btn {
-  width: calc(100% -  var(--btn-height) - var(--padding-one));
+  width: calc(100% -  var(--btn-h) - var(--space-one));
   float: right;
-  background-color: var(--my-black);
-  color: var(--my-white);
+  background-color: var(--dark);
+  color: var(--light);
 }
 .proceed-btn:hover {
-  background-color: var(--my-pink);
+  background-color: var(--pink);
 }
 .delete-btn {
-  width: var(--btn-height);
+  width: var(--btn-h);
   float: left;
-  background-color: var(--my-black);
-  color: var(--my-white);
+  background-color: var(--dark);
+  color: var(--light);
 }
 .delete-btn:hover {
   background-color: crimson;

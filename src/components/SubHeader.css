@@ -2,14 +2,15 @@
   display: flex;
   align-items: center;
   /* justify-content: space-between; */
-  height: var(--header-height);
+  height: var(--hdr-h);
+  padding: 0 var(--space-one);
 }
 .sub-title {
   /* position: relative; */
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: var(--font-med);
+  font-size: var(--md);
 }
 .sub-btn {
   margin-left: auto;

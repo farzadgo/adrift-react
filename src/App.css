@@ -1,15 +1,16 @@
 :root {
   --main-font: 'Lekton', 'Trebuchet MS', sans-serif;
-  --my-white: rgb(216, 218, 220);
-  --my-black: rgb(42, 39, 38);
-  --my-blue: rgb(141, 182, 193);
-  --my-pink:rgb(204, 145, 185);
-  --header-height: 90px;
-  --padding-one: 20px;
-  --btn-height: 90px;
-  --font-big: 1.8rem;
-  --font-med: 1.4rem;
-  --font-sml: 1.2rem;
+  --pink:rgb(204, 145, 185);
+  --light: rgb(216, 218, 220);
+  --dark: rgb(42, 39, 38);
+  --blue: rgb(141, 182, 193);
+  --hdr-h: 90px;
+  --btn-h: 90px;
+  --space-one: 20px;
+  --lg: 1.8rem;
+  --md: 1.4rem;
+  --sm: 1.2rem;
+  --speed: 500ms;
 }
 * {
   margin: 0;
@@ -19,7 +20,7 @@
 body {
   font-family: var(--main-font);
   font-weight: 700;
-  background-color: var(--my-blue);
+  background-color: var(--blue);
   -webkit-font-smoothing: antialiased;
 }
 a {
@@ -42,11 +43,11 @@ button[disabled] {
 .btn-big {
   cursor: pointer;
   border: none;
-  height: var(--btn-height);
+  height: var(--btn-h);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--main-font);
-  font-size: var(--font-big);
+  font-size: var(--lg);
   font-weight: bold;
 }

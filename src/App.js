@@ -59,7 +59,8 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <Menu display={toggle} setToggle={toggler}/>
+        {toggle && <Menu setToggle={toggler}/>}
+        {/* <Menu display={toggle} setToggle={toggler}/> */}
         <Switch>
 
           <Route path="/" exact>
@@ -71,7 +72,9 @@ const App = () => {
           </Route>
 
           <Route path="/:id" exact>
-            <Overview drifts={drifts} deleteDrift={deleteDrift} setToggle={toggler}/>
+            <Overview drifts={drifts} deleteDrift={deleteDrift} setToggle={toggler}>
+              <p>test paragraph</p>
+            </Overview>
           </Route>
 
           <Route path="/:id/:step" exact>

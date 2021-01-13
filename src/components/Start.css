@@ -1,11 +1,11 @@
 .start {
-  padding: 0 var(--padding-one);
+  padding: 0 var(--space-one);
 }
 .input {
   display: block;
   height: 60vh;
   width: 100%;
-  margin-bottom: var(--padding-one);
+  margin-bottom: var(--space-one);
   border: 2px solid #BEBEBE;
   padding: 10px;
   resize: none;
@@ -16,11 +16,11 @@
 }
 .input:focus {
   outline: none;
-  border: 2px solid var(--my-pink);
+  border: 2px solid var(--pink);
 }
 .lost-btn {
   width: 100%;
-  border-radius: calc(var(--btn-height) * 0.5);
-  background-color: var(--my-black);
-  color: var(--my-white);
+  border-radius: calc(var(--btn-h) * 0.5);
+  background-color: var(--dark);
+  color: var(--light);
 }

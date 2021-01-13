@@ -18,7 +18,7 @@ const DriftList = ({ drifts, setToggle }) => {
 
 
   return (
-    <div className="list-container">
+    <div className="drift-list">
       <SubHeader title={info.title} setToggle={setToggle}/>
       {drifts.map(item => 
         <DriftListThumb

@@ -1,28 +1,28 @@
-.list-container {
-  padding: 0 var(--padding-one);
-}
+/* .list-container {
+  padding: 0 var(--space-one);
+} */
 .list-title {
   display: flex;
   align-items: center;
   height: 60px;
 }
 .add-btn {
-  width: var(--btn-height);
+  width: var(--btn-h);
   position: absolute;
-  right: var(--padding-one);
+  right: var(--space-one);
   bottom: 12vh;
-  border-radius: calc(var(--btn-height) * 0.5);
-  background-color: var(--my-black);
+  border-radius: calc(var(--btn-h) * 0.5);
+  background-color: var(--dark);
 }
 /* --------------- DriftListThumb ---------------- */
 .drift-cover {
   display: flex;
   align-items: center;
-  background-color: var(--my-white);
+  background-color: var(--light);
   padding: 15px 20px;
-  margin-bottom: 30px;
-  border: 4px solid var(--my-black);
-  box-shadow: 7px 7px 0 var(--my-black);
+  margin: 0 var(--space-one) 30px var(--space-one);
+  border: 4px solid var(--dark);
+  box-shadow: 7px 7px 0 var(--dark);
 }
 .cover-list li {
   list-style: none;

@@ -6,7 +6,7 @@ import './Overview.css';
 import * as Icon from 'react-feather';
 
 
-const Overview = ({ drifts, setToggle, deleteDrift }) => {
+const Overview = ({ drifts, setToggle, deleteDrift, ...restProps }) => {
 
   let drift;
   const info = { title: 'Overview' };
@@ -92,9 +92,10 @@ const Overview = ({ drifts, setToggle, deleteDrift }) => {
 
 
   return (
-    <div className="drift-overview">
+    <div className="overview">
       <SubHeader title={info.title} setToggle={setToggle}/>
-      {drift ? <StepsList drift={drift}/> : <Sorry />}
+      { restProps.children }
+      { drift ? <StepsList drift={drift}/> : <Sorry /> }
     </div>
   )
 }

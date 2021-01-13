@@ -1,79 +1,96 @@
-.menu {
-  display: none;
+.menu-overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0;
+  background-color: #ffffffd3;
   z-index: 2;
-  padding: 0 var(--padding-one);
-  background-color: rgb(41, 39, 38);
-  overflow-y: auto;
 }
-.menu.show {
-  display: block;
+.menu-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--pink);
+  overflow: hidden;
+  z-index: 3;
+  border: 4px solid var(--dark);
+  box-shadow: 7px 7px 0 var(--dark);
 }
-/* ----------------------------------- */
-.menu-header {
+.menu {
+  width: 70vh;
+  height: 80vh;
+}
+
+.menu .sub-btn svg {
+  color: var(--dark);
+}
+.menu-item {
+  display: flex;
+  height: var(--hdr-h);
+  align-items: center;
+  padding: var(--space-one);
+  font-size: var(--md);
+}
+.menu .icon-right {
+  display: flex;
+  margin-left: auto;
+}
+.menu .icon-left {
+  display: flex;
+  width: auto;
+}
+.menu .icon-right svg,
+.menu .icon-left svg {
+  stroke-width: 1px;
+  width: 30px;
+  height: 30px;
+}
+.menu .icon-left svg {
+  margin-right: 20px;
+}
+
+.menu-item.ref {
+  height: calc(var(--hdr-h) * 0.7);
+}
+.menu-item.ref a {
   display: flex;
   align-items: center;
-  height: var(--header-height);
 }
-.menu-right-btn {
-  margin-left: auto;
-  background: none;
-  border: none;
-  cursor: pointer;
-  min-height: 48px;
-  min-width: 48px;
-}
-/* ----------------------------------- */
-.menu-item {
-  color: white;
-  margin-bottom: 10px;
-}
-/* "a" tag replaced with "button" */
-.menu-title {
-  background: none;
-  border: none;
-  color: white;
+
+.menu-content {
+  padding: 0 calc(var(--space-one) * 1.6);
+  height: calc(100% - var(--hdr-h));
+  overflow: auto;
   font-family: inherit;
   font-weight: bold;
-  font-size: var(--font-big);
-  cursor: pointer;
-  padding: 0 10px;
+  font-size: var(--sm);
 }
-/* .menu-title[data-before]::before {
-  font-family: "Material Icons";
-  content: attr(data-before) "";
-  font-size: 36px;
-  font-weight: 400;
-  position: relative;
-  top: 0.3em;
-  padding-right: 10px;
-} */
-.menu-content {
-  font-size: var(--font-med);
-  padding-top: calc(var(--padding-one) * 1.4);
+
+
+/* CSSTransition classes  */
+.menu-primary-enter {
+  position: absolute;
+  transform: translateX(-110%);
 }
-.menu-content p, .menu-content .external {
-  display: block;
-  margin-bottom: calc(var(--padding-one) * 1.4);
-  line-height: 1.6em;
-  font-weight: 400;
+.menu-primary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
 }
-.menu-content p.quote {
-  font-size: var(--font-sml);
-  padding: 10px 15px;
-  background-color: #1a1a1a;
-  border-left: 5px solid #4e4e4e;
+.menu-primary-exit {
+  position: absolute;
 }
-.menu-content .external::after {
-  content: "launch";
-  font-family: "Material Icons";
-  line-height: 0.1em;
-  font-size: 20px;
-  color: #9c9c9c;
+.menu-primary-exit-active {
+  transform: translateX(-110%);
+  transition: all var(--speed) ease;
 }
-.menu-content .external:nth-child(4)::after {
-  content: "save_alt";
+.menu-secondary-enter {
+  transform: translateX(110%);
+}
+.menu-secondary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+.menu-secondary-exit-active {
+  transform: translateX(110%);
+  transition: all var(--speed) ease;
 }
