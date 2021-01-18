@@ -1,28 +1,30 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import SubHeader from './SubHeader'
+import Header from './Header'
 import Sorry from './Sorry'
-
+import * as Icon from 'react-feather'
+import './Step.css'
 
 const Step = ({ drifts, setToggle }) => {
 
-  let drift;
+  // const [done, setDone] = useState(drift.completed);
+  let drift, step;
   const info = { title: 'Step' };
-  const { id, step } = useParams();
+  const { id, stepIndex } = useParams();
+  // console.log(id, stepIndex);
 
   // IMPORTANT
   if (drifts.length !== 0) {
     drift = drifts.filter(item => item.id === id)[0];
+    step = drift.steps[stepIndex - 1];
   }
-  
+  // console.log(step);
   
   const Content = () => {
     return (
-      <>
-        <div className="step-item">
-          <p> {drift.orgSteps[step]} </p>
-          <p> {drift.questions[step]} </p>
-        </div>
+      <div className="step">
+        <p className="step-item"> {step.newDir} </p>
+        <p className="step-item"> {step.question} </p>
 
         <RecordBtn />
         <StopBtn />
@@ -34,7 +36,7 @@ const Step = ({ drifts, setToggle }) => {
         {/* <button className="button txt next-button" disabled>
           ${emptyIndex == obj.records.length - 1 ? `Finish` : `Next`}
         </button> */}
-      </>
+      </div>
     )
   }
 
@@ -45,7 +47,7 @@ const Step = ({ drifts, setToggle }) => {
     }
     return (
       <>
-        <button className="button record-button" onClick={handleClick} disabled> record </button>
+        <button className="btn-big record-btn" onClick={handleClick} disabled> <Icon.Mic /> </button>
       </>
     )
   }
@@ -57,7 +59,7 @@ const Step = ({ drifts, setToggle }) => {
     }
     return (
       <>
-        <button className="button stop-button" onClick={handleClick} disabled> stop </button>
+        <button className="btn-big stop-btn" onClick={handleClick} disabled> stop </button>
       </>
     )
   }
@@ -65,7 +67,7 @@ const Step = ({ drifts, setToggle }) => {
   
   return (
     <>
-      <SubHeader title={info.title} stepId={id} setToggle={setToggle}/>
+      <Header title={info.title} stepId={id} setToggle={setToggle}/>
       {drift ? <Content drift={drift}/> : <Sorry />}
     </>
   )

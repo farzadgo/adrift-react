@@ -1,5 +1,5 @@
 import React from 'react'
-import './SubHeader.css'
+import './Header.css'
 import * as Icon from 'react-feather'
 import { Link, useLocation, useParams } from 'react-router-dom'
 
@@ -37,7 +37,7 @@ const SubHeader = ({ title, setToggle }) => {
         console.log('LeftBtn case_default');
     }
     return (
-      <Link to={`${target}`} className={show ? "sub-link" : "sublink hidden"} >
+      <Link to={`${target}`} className={show ? "header-link" : "sublink hidden"} >
         {icon}
       </Link>
     )
@@ -45,7 +45,7 @@ const SubHeader = ({ title, setToggle }) => {
 
   const RightBtn = ({ setToggle }) => {
     return (
-      <button className="sub-btn" onClick={setToggle}>
+      <button className="header-btn" onClick={setToggle}>
         <Icon.Menu {...iconProps}/>
       </button>
     )
@@ -53,9 +53,9 @@ const SubHeader = ({ title, setToggle }) => {
 
   
   return (
-    <div className="sub-header">
+    <div className="header">
       <LeftBtn title={title}/>
-      <p className="sub-title">{title}</p>
+      <p className="header-title">{title}</p>
       <RightBtn setToggle={setToggle}/>
     </div>
   )

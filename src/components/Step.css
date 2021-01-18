@@ -1,0 +1,4 @@
+.record-btn {
+  width: var(--btn-h);
+  border-radius: calc(var(--btn-h) * 0.5);
+}

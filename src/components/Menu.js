@@ -1,17 +1,26 @@
-import React, { useState } from "react";
-import './Menu.css';
-import * as Icon from 'react-feather';
-import { CSSTransition } from 'react-transition-group';
+import React, { useState } from "react"
+import './Menu.css'
+import * as Icon from 'react-feather'
+import { CSSTransition } from 'react-transition-group'
 
 
 const Menu = ({ setToggle }) => {
   const [activeMenu, setActiveMenu] = useState('main');
 
+  // let secondary = false;
+  // const menuNodes = Array.from(document.querySelectorAll('.menu-item'));
+  // menuNodes.length !== 5 ? secondary = false : secondary = true;
+
+
   const CloseMenu = ({ setToggle }) => {
+    const closeBtnProps = {
+      size: 36,
+      strokeWidth: 1
+    }
     return (
-      <div className="sub-header">
-        <button className="sub-btn" onClick={setToggle}>
-          <Icon.X size="36" strokeWidth="1"/>
+      <div className="header">
+        <button className="header-btn" onClick={setToggle}>
+          <Icon.X {...closeBtnProps}/>
         </button>
       </div>
     )
@@ -19,18 +28,20 @@ const Menu = ({ setToggle }) => {
 
   const MenuItem = (props) => {
     return (
-      <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+      <div
+        className={props.title ? "menu-item title" : "menu-item"}
+        onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
         <span className="icon-left">{props.leftIcon}</span>
         {props.children}
         <span className="icon-right">{props.rightIcon}</span>
-      </a>
+      </div>
     );
   }
 
   const RefItem = ({ leftIcon, href, children }) => {
     return (
       <h3 className="menu-item ref">
-        <a href={href} className="external" target="_blank" rel="noreferrer">
+        <a href={href} target="_blank" rel="noreferrer">
           <span className="icon-left">{leftIcon}</span>
           {children}
         </a>
@@ -41,7 +52,7 @@ const Menu = ({ setToggle }) => {
 
   return (
     <>
-      <div className="menu-overlay"></div>
+      {/* <div className="menu-overlay"></div> */}
 
       <div className="menu-container">
         <CSSTransition
@@ -80,8 +91,8 @@ const Menu = ({ setToggle }) => {
           classNames="menu-secondary"
           unmountOnExit>
           <div className="menu">
-            <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />}>
-              <h2>about</h2>
+            <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />}  title>
+              <h2>adrift</h2>
             </MenuItem>
             <div className="menu-content">
               <p>
@@ -103,8 +114,8 @@ const Menu = ({ setToggle }) => {
           classNames="menu-secondary"
           unmountOnExit>
           <div className="menu">
-            <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />}>
-              <h2>theoretical background</h2>
+            <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />} title>
+              <h2>theory</h2>
             </MenuItem>
             <div className="menu-content">
               <p>
@@ -126,7 +137,7 @@ const Menu = ({ setToggle }) => {
           classNames="menu-secondary"
           unmountOnExit>
           <div className="menu">
-            <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />}>
+            <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />} title>
               <h2>development</h2>
             </MenuItem>
             <div className="menu-content">
@@ -149,10 +160,9 @@ const Menu = ({ setToggle }) => {
           classNames="menu-secondary"
           unmountOnExit>
           <div className="menu">
-            <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />}>
-              <h2>links and references</h2>
+            <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />} title>
+              <h2>links</h2>
             </MenuItem>
-
             <RefItem leftIcon={<Icon.Code />} href="https://github.com/farzadgo/adrift">
               Source code repository
             </RefItem>

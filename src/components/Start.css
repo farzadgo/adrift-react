@@ -1,9 +1,10 @@
 .start {
+  height: calc(100% - var(--hdr-h));
   padding: 0 var(--space-one);
 }
 .input {
   display: block;
-  height: 60vh;
+  height: calc(100% - var(--btn-h) - var(--space-one) * 2);
   width: 100%;
   margin-bottom: var(--space-one);
   border: 2px solid #BEBEBE;

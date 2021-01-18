@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import SubHeader from './SubHeader';
-import './Start.css';
-import { deconstructor } from './deconstructor';
-import { v4 as uuidv4 } from 'uuid';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react'
+import Header from './Header'
+import './Start.css'
+import { deconstructor } from './deconstructor'
+import { v4 as uuidv4 } from 'uuid'
+import { useHistory } from 'react-router-dom'
 
 
 const Start = ({ setToggle, addDrift }) => {
@@ -13,45 +13,30 @@ const Start = ({ setToggle, addDrift }) => {
   let newDrift;
 
   // DRIFT CONSTRUCTOR
-  const Drift = function(id, date, dest, stp, stp_, qs, rs, cd) {
+  const Drift = function(id, date, dst, stps) {
     this.id = id;
     this.date = date;
-    this.destination = dest;
-    this.orgSteps = stp;
-    this.newSteps = stp_;
-    this.questions = qs;
-    this.records = rs;
-    this.completed = cd;
+    this.dest = dst;
+    this.steps = stps;
   }
   // DRIFT ADDER
   const createDrift = (inp) => {
     const dirObj = deconstructor(inp);
     if (!!Object.values(dirObj).every(item => item)) {
-      // console.log(dirObj.orgDirs);
-      // const driftLength = dirObj.orgDirs
       // ID
-      // data.drifts.length == 0 ? ID = 0 : ID = data.drifts[data.drifts.length - 1].id + 1;
-      let id = uuidv4();
+      const id = uuidv4();
       // DATE
-      const ts = new Date();
-      let date = ts.toLocaleString();
-      // DEST
-      let dest = dirObj.destination;
-      // ORIGINAL STEPS
-      let sourceSteps = dirObj.orgDirs;
-      // NEW STEPS
-      let lostSteps = dirObj.newDirs;
-      // QUESTIONS
-      let questions = dirObj.questions;
-      // RECORDINGS
-      let recordings = [];
-      // V2. WE CAN RECORD AS MUCH AS WE LIKE
-      // recordings.length = dirObj.newDirs.dirArr.length;
-      // COMPLETED
-      // let completed = new Array(dirObj.orgDirs.length);
-      let completed = new Array(dirObj.orgDirs.length).fill(false);
+      let options = {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      };
+      const date = new Date().toLocaleString('en-DE', options)
 
-      newDrift = new Drift(id, date, dest, sourceSteps, lostSteps, questions, recordings, completed);
+      newDrift = new Drift(id, date, dirObj.dest, dirObj.steps);
 
       // /*>> adrift v1 (alpha) <<*/
       // data.drifts.push(newDrift);
@@ -82,6 +67,7 @@ const Start = ({ setToggle, addDrift }) => {
       } else {
         // history.push(`/`);
       }
+      // console.log(deconstructor(inputValue));
     }
     return (
       <button 
@@ -94,20 +80,23 @@ const Start = ({ setToggle, addDrift }) => {
     );
   }
 
+  // <Link to="/" onClick={() => createDrift(inputValue)}>
+  //   <Icon.ChevronRight />
+  // </Link>
+  
   return (
-    <div className="start">
-      <SubHeader title={info.title} setToggle={setToggle}/>
-      <textarea
-        value={inputValue}
-        onChange={e => setInputValue(e.target.value)}
-        className="input"
-        placeholder={"Type here..."}
-      />
-      <LostBtn />
-      {/* <Link to="/" onClick={() => createDrift(inputValue)}>
-        <Icon.ChevronRight />
-      </Link> */}
-    </div>
+    <>
+      <Header title={info.title} setToggle={setToggle}/>
+      <div className="start">
+        <textarea
+          value={inputValue}
+          onChange={e => setInputValue(e.target.value)}
+          className="input"
+          placeholder={"Type here..."}
+        />
+        <LostBtn />
+      </div>
+    </>
   )
 }
 

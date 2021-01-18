@@ -180,29 +180,47 @@ export const deconstructor = (inp) => {
 
   }
 
-  
+  const Step = function(_org, _new, _que) {
+    this.orgDir = _org;
+    this.newDir = _new;
+    this.question = _que;
+    this.records = [];
+    this.completed = false;
+  }
+
+  const createSteps = (orgs, news, ques) => {
+    let steps = [];
+    orgs.forEach((e, i) => {
+      steps.push(new Step(orgs[i], news[i], ques[i]));
+    });
+    return steps
+  }
+
+
   // DECONSTRUCTING THE DIRECTIONS TEXT
   const allLines = inp.toLowerCase().split('\n').filter(Boolean);
   const allWords = allLines.map(e => e.split(' '));
   const dirWords = allWords.filter(e => e[0] === `${parseInt(e[0])}.`);
-    // console.log('Directions Text:', dirWords);
+  // console.log('Directions Text:', dirWords);
 
   const destination = getDest(dirWords);
   // console.log('Destination:', destination);
 
   const orgDirs = getOrgDirs(dirWords);
-    // console.log('Simplifed Directions:', orgDirs.dirArr);
+  // console.log('Simplifed Directions:', orgDirs.dirArr);
 
   const newDirs = getNewDirs(orgDirs.dirArr);
-    // console.log('New Directions:', newDirs.dirArr);
+  // console.log('New Directions:', newDirs.dirArr);
 
   const questions = getQuestions(orgDirs.dirStr);
   // console.log('Questions:', questions);
+
+  const steps = createSteps(orgDirs.dirStr, newDirs.dirStr, questions);
+  // console.log(steps);
+
   
   return {
-    destination: destination,
-    orgDirs: orgDirs.dirStr,
-    newDirs: newDirs.dirStr,
-    questions: questions,
+    dest: destination,
+    steps: steps
   }
 }

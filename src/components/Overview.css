@@ -1,46 +1,41 @@
 .overview {
-  /* position: relative; */
-  height: calc(100% - var(--btn-height) - var(--padding-one));
-  margin-bottom: var(--padding-one);
-  overflow-y: auto;
+  height: calc(100% - var(--hdr-h));
+  padding: 0 var(--space-one);
 }
-/* --------------------------------------- */
-.steps-title {
-  margin-bottom: var(--space-one);
-}
-.steps {
-  display: flex;
-  /* justify-content: space-between; */
-  margin-bottom: var(--space-one);
-  /* overflow-y: auto; */
-}
+/* ------------------------------------------ */
 .steps-list {
+  height: calc(100% - var(--btn-h) - var(--space-one)*2);
+  overflow-y: auto;
+  margin-bottom: var(--space-one);
+}
+.step-thumb {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.step-thumb-item {
   font-size: var(--sm);
-  list-style: none;
-  margin-right: var(--space-one);
-  /* width: 46%; */
+  width: 50%;
+  white-space: nowrap;
+  overflow: hidden;
 }
-.steps-list.new {
-  color: crimson;
+.step-thumb-item:first-child {
+  color: var(--pink);
 }
-.steps-list.box {
-  margin-left: auto;
-  margin-right: 0;
+.step-thumb-item:nth-child(2) {
+  padding-left: 0.6em;
 }
-.steps-list-item {
-  line-height: 1em;
-  height: 60px;
+.step-thumb-arrow {
+  /* margin-left: auto; */
+  display: flex;
 }
-/* .preview-list-item .box {
-  display: block;
-  position: relative;
-  top: -0.5rem;
-} */
-/* .preview-list-item .empty {
-  color: #BEBEBE;
-} */
+.step-thumb-arrow.deactive {
+  pointer-events: none;
+  opacity: 0.5;
+}
 
 /* ------------------------------------------ */
+
 .proceed-btn {
   width: calc(100% -  var(--btn-h) - var(--space-one));
   float: right;

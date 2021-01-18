@@ -1,13 +1,15 @@
-import React from 'react';
-import { useParams, useHistory } from 'react-router-dom';
-import SubHeader from './SubHeader';
-import Sorry from './Sorry';
-import './Overview.css';
-import * as Icon from 'react-feather';
+import React from 'react'
+import { useParams, useHistory, Link } from 'react-router-dom'
+import Header from './Header'
+import Sorry from './Sorry'
+import './Overview.css'
+import * as Icon from 'react-feather'
 
 
-const Overview = ({ drifts, setToggle, deleteDrift, ...restProps }) => {
 
+const Overview = ({ drifts, setToggle, deleteDrift }) => {
+
+  // const [ open, setOpen ] = useState(false);
   let drift;
   const info = { title: 'Overview' };
   const { id } = useParams();
@@ -22,67 +24,51 @@ const Overview = ({ drifts, setToggle, deleteDrift, ...restProps }) => {
     drift = drifts.filter(item => item.id === id)[0];
   }
 
-  // const headerParams = {
-  //   title: 'Overview',
-  //   stepId: id
-  // }
-
   const StepsList = ({ drift }) => {
-    // const [done, setDone] = useState(drift.completed);
-    const length = drift.completed.length;
-    const iconProps = {color: '#2a2726', size: 24, strokeWidth: 2}
-
+    const { steps } = drift;
     return (
-      <>
-        <p className="steps-title">Forget about {drift.destination}.. {drift.completed.filter(e => e !== false).length}/{length}</p>
-        <div className="steps">
-          <ul className="steps-list org">
-            {drift.orgSteps.map((e, i) => <li key={i} className="steps-list-item"> {drift.orgSteps[i]} </li>)}
-          </ul>
-          <ul className="steps-list new">
-            {drift.newSteps.map((e, i) => <li key={i} className="steps-list-item"> {drift.newSteps[i]} </li>)}
-          </ul>
-          <ul className="steps-list box">
-            {drift.completed.map((e, i) => <li key={i} className="steps-list-item">
-              {e ? <Icon.CheckCircle {...iconProps} /> : <Icon.Circle {...iconProps} />}
-            </li>)}
-          </ul>
+      <div className="overview">
+        <div className="steps-list">
+          {steps.map((e, i) =>
+          <StepThumb
+            key={i}
+            orgDir={e.orgDir}
+            newDir={e.newDir}
+            question={e.question}
+            completed={e.completed}/>
+          )}
         </div>
-        <DeleteBtn id={drift.id} />
-        {/* TODO: show if there is still 'false' in completed array left */}
-        <ProceedBtn drift={drift} />
-      </>
+        <div className="steps-btns">
+          <DeleteBtn id={drift.id} />
+          {/* TODO: show if there is still 'false' in completed array left */}
+          <ProceedBtn drift={drift} />
+        </div>
+      </div>
     )
   }
 
-
-  const ProceedBtn = ({ drift }) => {
-    const iconProps = {color: 'white', size: 40, strokeWidth: 1}
-    const history = useHistory();
-
-    const handleClick = () => {
-      // console.log(drift);
-      const currentStep = drift.completed.findIndex(e => e == false);
-      history.push(`/${drift.id}/${currentStep}`);
-    }
-
+  const StepThumb = ({ orgDir, newDir, completed }) => {
+    const iconProps = {color: '#2a2726', size: 32, strokeWidth: 1}
     return (
-      <button type="button" onClick={handleClick} className="btn-big proceed-btn">
-        <Icon.Play {...iconProps}/>
-      </button>
-    );
+      <div className="step-thumb">
+        <span className="step-thumb-item"> {orgDir} </span>
+        <span className="step-thumb-item"> {newDir} </span>
+        <Link
+          to={`/${id}`}
+          className={completed ? "step-thumb-arrow" : "step-thumb-arrow deactive"}>
+          <Icon.ChevronRight {...iconProps}/>
+        </Link>
+      </div>
+    )
   }
-
 
   const DeleteBtn = ({ id }) => {
     const iconProps = {color: 'white', size: 40, strokeWidth: 1}
     const history = useHistory();
-
     const handleClick = () => {
       deleteDrift(id);
       history.push("/");
     }
-
     return (
       <button type="button" onClick={handleClick} className="btn-big delete-btn">
         <Icon.Trash {...iconProps}/>
@@ -90,13 +76,31 @@ const Overview = ({ drifts, setToggle, deleteDrift, ...restProps }) => {
     );
   }
 
+  const ProceedBtn = ({ drift }) => {
+    const history = useHistory();
+    const handleClick = () => {
+      // console.log(drift.steps);
+      let arr = [];
+      drift.steps.forEach(e => arr = [...arr, e.completed]);
+      const currentStep = arr.findIndex(e => e == false) + 1;
+      // console.log(currentStep);
+      history.push(`/${drift.id}/${currentStep}`);
+      // setOpen(!open);
+    }
+    return (
+      <button type="button" onClick={handleClick} className="btn-big proceed-btn">
+        <span> Start </span>
+      </button>
+    );
+  }
+
 
   return (
-    <div className="overview">
-      <SubHeader title={info.title} setToggle={setToggle}/>
-      { restProps.children }
+    <>
+      <Header title={info.title} setToggle={setToggle}/>
+      {/* { open && children } */}
       { drift ? <StepsList drift={drift}/> : <Sorry /> }
-    </div>
+    </>
   )
 }
 

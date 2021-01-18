@@ -1,36 +1,39 @@
-.menu-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: #ffffffd3;
-  z-index: 2;
-}
 .menu-container {
   position: absolute;
-  left: 50%;
+  /* left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
+  width: 100%;
+  height: 100%;
   background-color: var(--pink);
   overflow: hidden;
   z-index: 3;
-  border: 4px solid var(--dark);
-  box-shadow: 7px 7px 0 var(--dark);
 }
 .menu {
-  width: 70vh;
-  height: 80vh;
-}
-
-.menu .sub-btn svg {
-  color: var(--dark);
+  /* width: 520px;
+  height: calc(100vh - 90px); */
+  width: 100%;
+  height: 100%;
 }
 .menu-item {
   display: flex;
-  height: var(--hdr-h);
+  height: calc(var(--hdr-h) * 0.7);
   align-items: center;
   padding: var(--space-one);
   font-size: var(--md);
+  cursor: pointer;
 }
+.menu-item.title {
+  height: var(--hdr-h);
+}
+.menu-item.ref {
+  height: calc(var(--hdr-h) * 0.6);
+}
+.menu-item.ref a {
+  display: flex;
+  align-items: center;
+}
+/* MENU ICONS */
 .menu .icon-right {
   display: flex;
   margin-left: auto;
@@ -41,22 +44,14 @@
 }
 .menu .icon-right svg,
 .menu .icon-left svg {
-  stroke-width: 1px;
-  width: 30px;
-  height: 30px;
+  stroke-width: 1.5px;
+  width: 28px;
+  height: 28px;
 }
 .menu .icon-left svg {
   margin-right: 20px;
 }
-
-.menu-item.ref {
-  height: calc(var(--hdr-h) * 0.7);
-}
-.menu-item.ref a {
-  display: flex;
-  align-items: center;
-}
-
+/* MENU CONTENT */
 .menu-content {
   padding: 0 calc(var(--space-one) * 1.6);
   height: calc(100% - var(--hdr-h));

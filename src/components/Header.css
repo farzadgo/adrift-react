@@ -1,18 +1,18 @@
-.sub-header {
+.header {
   display: flex;
   align-items: center;
   /* justify-content: space-between; */
   height: var(--hdr-h);
   padding: 0 var(--space-one);
 }
-.sub-title {
+.header-title {
   /* position: relative; */
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   font-size: var(--md);
 }
-.sub-btn {
+.header-btn {
   margin-left: auto;
   background: none;
   border: none;
@@ -20,7 +20,7 @@
   min-height: 48px;
   min-width: 48px;
 }
-.sub-link {
+.header-link {
   margin-right: auto;
   display: flex;
   align-items: center;
@@ -28,6 +28,6 @@
   min-height: 48px;
   min-width: 48px;
 }
-.sub-link.hidden {
+/* .header-link.hidden {
   visibility: hidden;
-}
+} */

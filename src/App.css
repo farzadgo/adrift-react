@@ -1,7 +1,8 @@
 :root {
   --main-font: 'Lekton', 'Trebuchet MS', sans-serif;
-  --pink:rgb(204, 145, 185);
-  --light: rgb(216, 218, 220);
+  /* --pink:rgb(204, 145, 185); */
+  --pink: rgb(192, 104, 164);
+  --light: rgb(243, 237, 236);
   --dark: rgb(42, 39, 38);
   --blue: rgb(141, 182, 193);
   --hdr-h: 90px;
@@ -18,9 +19,19 @@
   box-sizing: border-box;
 }
 body {
+  --dark-gray: #1f1f1f;
+  --light-gray: #353535;
   font-family: var(--main-font);
   font-weight: 700;
-  background-color: var(--blue);
+  background-image: linear-gradient(
+    135deg, var(--light-gray) 7.14%,
+    var(--dark-gray) 7.14%,
+    var(--dark-gray) 50%, 
+    var(--light-gray) 50%,
+    var(--light-gray) 57.14%,
+    var(--dark-gray) 57.14%,
+    var(--dark-gray) 100%);
+  background-size: 10px 10px;
   -webkit-font-smoothing: antialiased;
 }
 a {
@@ -50,4 +61,25 @@ button[disabled] {
   font-family: var(--main-font);
   font-size: var(--lg);
   font-weight: bold;
+}
+.app-container {
+  position: relative;
+  background-color: var(--light);
+  height: calc(100vh - 90px);
+  width: 520px;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: content-box;
+  border: 5px solid var(--light);
+  outline: 2px solid black;
+}
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #b3b3b3;
+  border: 1px solid transparent;
+  background-clip: content-box;
+  border-radius: 2px;
 }
