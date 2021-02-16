@@ -31,3 +31,13 @@
 .drift-thumb-arrow {
   margin-left: auto;
 }
+/* ------------------------------------------ */
+.drift-empty {
+  font-size: var(--md);
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  line-height: 2.4em;
+}

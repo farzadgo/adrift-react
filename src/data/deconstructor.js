@@ -1,4 +1,4 @@
-import { allQuestions } from '../data/questions.js';
+import { allQuestions } from './questions.js'
 
 export const deconstructor = (inp) => {
     

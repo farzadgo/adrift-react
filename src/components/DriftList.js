@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import Header from './Header'
 import * as Icon from 'react-feather'
+import Header from './Header'
 import './DriftList.css'
 
 
@@ -14,7 +14,6 @@ const DriftThumb = ({ id, title, time, steps }) => {
   }
   const handleClick = () => {
     history.push(`/${id}`);
-    // setDrift(id);
   }
   return (
     <div className="drift-thumb" onClick={handleClick}>
@@ -44,26 +43,34 @@ const DriftList = ({ drifts, setToggle }) => {
     size: 42,
     strokeWidth: 1
   }
+
   return (
     <>
       <Header info={info} setToggle={setToggle}/>
       <div className="body">
+
         <div className="drift-list">
-          {drifts.map(e => 
+        { drifts.length ?
+          drifts.map(e => 
             <DriftThumb
               key={e.id}
               id={e.id}
               title={e.dest}
               time={e.date}
               steps={e.steps}
-            />
-          )}
+            />) :
+          <div className="drift-empty">
+            <p> You have not performed any drifts yet </p>
+            <p> click + button to start </p>
+          </div> }
         </div>
+
         <div className="buttons">
           <Link className="btn-big add-btn" to="/start">
             <Icon.Plus {...iconProps}/>
           </Link>
         </div>
+
       </div>
     </>
 

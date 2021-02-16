@@ -10,7 +10,7 @@ import './Header.css'
 const Header = ({ info, setToggle }) => {
   let headerTitle;
   const iconProps = {
-    color: 'rgb(36, 36, 36)',
+    color: '#2A2726',
     size: 36,
     strokeWidth: 1
   }
@@ -57,6 +57,7 @@ const Header = ({ info, setToggle }) => {
       <button
         className="header-btn right"
         type="button"
+        aria-label="Menu"
         onClick={setToggle}
       >
         <Icon.Menu {...iconProps}/>

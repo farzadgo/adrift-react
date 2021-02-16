@@ -96,7 +96,7 @@ const Recorder = ({ driftId, stepIndex, addRecording }) => {
   return (
     <div className="step-controls">
       <button
-        className="record-btn"
+        className={status === 'recording' ? 'record-btn deactive' : 'record-btn'}
         onClick={startRecording}
         style={{borderColor: recColor}}
       >
@@ -170,16 +170,16 @@ const Step = ({ drifts, setToggle, addRecording, deleteRecording, checkStep }) =
 
         </div>
 
+        {!step.completed.length &&
         <div className="buttons">
-          {!step.completed.length &&
-            <NextBtn
-              stepIndex={stepIndex}
-              driftId={driftId}
-              driftLength={driftLength}
-              checkStep={checkStep}
-            />
-          }
+          <NextBtn
+            stepIndex={stepIndex}
+            driftId={driftId}
+            driftLength={driftLength}
+            checkStep={checkStep}
+          />
         </div>
+        }
       </div> :
       <Loader />
       }

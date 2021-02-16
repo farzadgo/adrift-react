@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import Header from './Header'
-import './Start.css'
-import { deconstructor } from './deconstructor'
-import { v4 as uuidv4 } from 'uuid'
 import { useHistory } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
+import * as Icon from 'react-feather'
+import Header from './Header'
+import { deconstructor } from '../data/deconstructor'
+import { sampleDirections } from '../data/sample-directions'
+import './Start.css'
 
 
 const Start = ({ setToggle, addDrift }) => {
@@ -55,7 +57,6 @@ const Start = ({ setToggle, addDrift }) => {
     }
   }
 
-
   const LostBtn = () => {
     const history = useHistory();
     const handleClick = () => {
@@ -77,6 +78,28 @@ const Start = ({ setToggle, addDrift }) => {
     );
   }
   
+  const SampleBtn = () => {
+    const iconProps = {
+      color: '#2a2726',
+      size: 32,
+      strokeWidth: 1
+    }
+    const handlePaste = () => {
+      setInputValue(sampleDirections)
+    }
+    return (
+      <button
+          type="button"
+          className="sample-btn"
+          aria-label="Sample text"
+          onClick={handlePaste}
+        >
+          <Icon.FileText {...iconProps}/>
+        </button>
+    )
+  }
+
+
   return (
     <>
       <Header info={info} setToggle={setToggle}/>
@@ -86,9 +109,10 @@ const Start = ({ setToggle, addDrift }) => {
             value={inputValue}
             className="input"
             onChange={e => setInputValue(e.target.value)}
-            placeholder={"Type here..."}
+            placeholder={`Paste the directions text here...\n\nFor a sample directions text tap on the bottom icon`}
           />
         </div>
+        {!inputValue && <SampleBtn/>}
         <div className="buttons">
           <LostBtn />
         </div>

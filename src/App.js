@@ -51,7 +51,6 @@ const App = () => {
     db.drifts.add(drift).then(async () => {
       let allDrifts = await db.drifts.toArray();
       setDrifts(allDrifts);
-      // console.log(allDrifts);
     });
   }
 
@@ -61,7 +60,6 @@ const App = () => {
     setDrifts(allDrifts);
   }
 
-  // init
   useEffect(() => {
     const getDrifts = async () => {
       let allDrifts = await db.drifts.toArray();
@@ -69,6 +67,7 @@ const App = () => {
       console.log('data fetched');
     }
     getDrifts();
+    // add window resize listener here
   }, []);
 
 

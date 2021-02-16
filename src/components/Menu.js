@@ -1,19 +1,15 @@
-import React, { useState } from "react"
-import './Menu.css'
-import * as Icon from 'react-feather'
+import React, { useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
+import * as Icon from 'react-feather'
+import './Menu.css'
 
 
 const Menu = ({ setToggle }) => {
   const [activeMenu, setActiveMenu] = useState('main');
 
-  // let secondary = false;
-  // const menuNodes = Array.from(document.querySelectorAll('.menu-item'));
-  // menuNodes.length !== 5 ? secondary = false : secondary = true;
-
-
   const CloseMenu = ({ setToggle }) => {
     const closeBtnProps = {
+      color: '#dbdbdb',
       size: 36,
       strokeWidth: 1
     }
@@ -40,7 +36,7 @@ const Menu = ({ setToggle }) => {
 
   const RefItem = ({ leftIcon, href, children }) => {
     return (
-      <h3 className="menu-item ref">
+      <h3 className="menu-item link">
         <a href={href} target="_blank" rel="noreferrer">
           <span className="icon-left">{leftIcon}</span>
           {children}
@@ -48,7 +44,6 @@ const Menu = ({ setToggle }) => {
       </h3>
     )
   }
-
 
   return (
     <>
@@ -64,22 +59,22 @@ const Menu = ({ setToggle }) => {
   
             <CloseMenu setToggle={setToggle}/>
   
-            <MenuItem><h3>instructions</h3></MenuItem>
+            <MenuItem><h3>Instructions</h3></MenuItem>
   
             <MenuItem goToMenu="about" rightIcon={<Icon.ChevronRight />}>
-              <h3>about Adrift</h3>
+              <h3>About Adrift</h3>
             </MenuItem>
   
             <MenuItem goToMenu="theory" rightIcon={<Icon.ChevronRight />}>
-              <h3>theoretical background</h3>
+              <h3>Theoretical background</h3>
             </MenuItem>
   
             <MenuItem goToMenu="dev" rightIcon={<Icon.ChevronRight />}>
-              <h3>development</h3>
+              <h3>Development</h3>
             </MenuItem>
   
             <MenuItem goToMenu="refs" rightIcon={<Icon.ChevronRight />}>
-              <h3>links and references</h3>
+              <h3>Links and references</h3>
             </MenuItem>
   
           </div>
@@ -92,7 +87,7 @@ const Menu = ({ setToggle }) => {
           unmountOnExit>
           <div className="menu">
             <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />}  title>
-              <h2>adrift</h2>
+              <h2>Adrift</h2>
             </MenuItem>
             <div className="menu-content">
               <p>
@@ -115,7 +110,7 @@ const Menu = ({ setToggle }) => {
           unmountOnExit>
           <div className="menu">
             <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />} title>
-              <h2>theory</h2>
+              <h2>Theory</h2>
             </MenuItem>
             <div className="menu-content">
               <p>
@@ -138,7 +133,7 @@ const Menu = ({ setToggle }) => {
           unmountOnExit>
           <div className="menu">
             <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />} title>
-              <h2>development</h2>
+              <h2>Development</h2>
             </MenuItem>
             <div className="menu-content">
               <p>
@@ -161,7 +156,7 @@ const Menu = ({ setToggle }) => {
           unmountOnExit>
           <div className="menu">
             <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />} title>
-              <h2>links</h2>
+              <h2>Links</h2>
             </MenuItem>
             <RefItem leftIcon={<Icon.Code />} href="https://github.com/farzadgo/adrift">
               Source code repository
@@ -195,6 +190,6 @@ const Menu = ({ setToggle }) => {
 
     </>
   )
-};
+}
 
-export default Menu;
+export default Menu

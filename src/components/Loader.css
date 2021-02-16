@@ -11,19 +11,17 @@
     stroke-dasharray: 150.6 100.4;
   }
 }
-
 .loader {
   height: calc(100% - var(--hdr-h) * 2);
 }
-
 .spinner, .err-msg {
   position: relative;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  line-height: 3em;
 }
-
 .spinner-circle {
   animation: 2s linear spinning-circle infinite;
 }

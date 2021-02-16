@@ -21,3 +21,19 @@
   outline: none;
   border: 2px solid var(--pink);
 }
+.sample-btn {
+  position: fixed;
+  bottom: calc(var(--btn-h) + var(--space-one) * 2 + 60px);
+  right: var(--space-one);
+  width: 48px;
+  height: 48px;
+  background: none;
+  border: none;
+  z-index: 1;
+  cursor: pointer;
+}
+@media (min-width: 620px) {
+  .sample-btn {
+    bottom: calc(var(--btn-h) + var(--space-one) * 2);
+  }
+}

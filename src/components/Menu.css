@@ -1,20 +1,18 @@
+/* -- "100%" important for transitions -- */
 .menu-container {
   position: absolute;
-  /* left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%); */
   width: 100%;
   height: 100%;
-  background-color: var(--pink);
+  background-color: var(--dark);
+  color: var(--light);
   overflow: hidden;
   z-index: 3;
 }
 .menu {
-  /* width: 520px;
-  height: calc(100vh - 90px); */
   width: 100%;
   height: 100%;
 }
+/* ------------- MENU ITEMS ------------- */
 .menu-item {
   display: flex;
   height: calc(var(--hdr-h) * 0.7);
@@ -23,46 +21,54 @@
   font-size: var(--md);
   cursor: pointer;
 }
+.menu-item h3 {
+  font-weight: normal;
+}
 .menu-item.title {
   height: var(--hdr-h);
 }
-.menu-item.ref {
+.menu-item.link {
   height: calc(var(--hdr-h) * 0.6);
 }
-.menu-item.ref a {
+.menu-item.link a {
   display: flex;
   align-items: center;
 }
-/* MENU ICONS */
+/* ------------- MENU ICONS ------------- */
+.menu .icon-left {
+  display: flex;
+}
 .menu .icon-right {
   display: flex;
   margin-left: auto;
 }
-.menu .icon-left {
-  display: flex;
-  width: auto;
-}
-.menu .icon-right svg,
-.menu .icon-left svg {
-  stroke-width: 1.5px;
-  width: 28px;
-  height: 28px;
+.menu .icon-left svg,
+.menu .icon-right svg {
+  stroke-width: 1px;
+  width: 36px;
+  height: 36px;
 }
 .menu .icon-left svg {
   margin-right: 20px;
 }
-/* MENU CONTENT */
+/* ------------- MENU CONTENT ------------- */
 .menu-content {
-  padding: 0 calc(var(--space-one) * 1.6);
+  padding: 0 calc(var(--space-one) * 1.5);
   height: calc(100% - var(--hdr-h));
   overflow: auto;
-  font-family: inherit;
-  /* font-weight: bold; */
-  font-size: var(--sm);
+  font-size: var(--md);
 }
-
-
-/* CSSTransition classes  */
+.menu-content p {
+  line-height: 1.6em;
+  margin-bottom: var(--space-one);
+}
+.menu-content .quote {
+  font-size: var(--sm);
+  padding: 10px 15px;
+  background-color: #3a3a3a;
+  border-left: 5px solid #555555;
+}
+/* ------------- CSSTransition classes ------------- */
 .menu-primary-enter {
   position: absolute;
   transform: translateX(-110%);

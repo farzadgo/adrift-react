@@ -27,6 +27,9 @@
   margin: var(--space-one) 0.4em;
   cursor: pointer;
 }
+.record-btn.deactive {
+  pointer-events: none;
+}
 /* ------------------------------------------ */
 .record-thumb {
   display: flex;

@@ -12,7 +12,7 @@ const Message = () => {
   }
   return (
     <div className="err-msg">
-      <p style={{marginBottom: '20px'}}> Invalid URL ツ </p>
+      <p> Invalid URL ツ </p>
       <Link to={`/`}>
         <Icon.Home {...iconProps}/>
       </Link>
