@@ -1,4 +1,57 @@
-.record-btn {
-  width: var(--btn-h);
-  border-radius: calc(var(--btn-h) * 0.5);
+/* ------------------------------------------ */
+.step {
+  height: calc(100% - var(--btn-h) - var(--space-one) * 2);
+  overflow-y: auto;
+  margin-bottom: var(--space-one);
+  padding: 0 var(--space-one);
+}
+/* ------------------------------------------ */
+.step-directions {
+  text-align: center;
+}
+.step-item {
+  font-size: var(--lg);
+  margin-bottom: var(--space-one);
+  line-height: 1.4em;
+}
+/* ------------------------------------------ */
+.step-controls {
+  text-align: center;
+}
+.record-btn, .stop-btn {
+  --ht: var(--btn-h);
+  width: var(--ht);
+  height: var(--ht);
+  border-radius: calc(var(--ht) * 0.5);
+  border: 2px solid var(--dark);
+  margin: var(--space-one) 0.4em;
+  cursor: pointer;
+}
+/* ------------------------------------------ */
+.record-thumb {
+  display: flex;
+  align-items: center;
+}
+.audio-player {
+  width: calc(100% - 60px);
+  width: 100%;
+}
+.audio-player:focus {
+  outline: none;
+}
+.audio-player::-webkit-media-controls-panel {
+  background-color: var(--light);
+}
+.record-thumb-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  min-height: 48px;
+  min-width: 48px;
+}
+.no-records {
+  font-size: var(--sm);
 }

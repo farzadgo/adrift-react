@@ -1,64 +1,86 @@
 import React from 'react'
-import './Header.css'
 import * as Icon from 'react-feather'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import './Header.css'
 
+// <Link to="/" onClick={() => createDrift(inputValue)}>
+//   <Icon.ChevronRight />
+// </Link>
 
-const SubHeader = ({ title, setToggle }) => {
+const Header = ({ info, setToggle }) => {
+  let headerTitle;
+  const iconProps = {
+    color: 'rgb(36, 36, 36)',
+    size: 36,
+    strokeWidth: 1
+  }
+  const { driftId, stepIndex } = useParams();
+  const { title, length, destination } = info;
 
-  const iconProps = {color: 'rgb(36, 36, 36)', size: 36, strokeWidth: 1}
-  const { id } = useParams();
-
-  const LeftBtn = ({ title }) => {
+  const LeftBtn = () => {
+    let leftIcon;
     let show = true;
-    let icon;
     let target = '/';
     switch (title) {
       case 'DriftList':
-        // console.log('LeftBtn case_1');
         show = false;
-        icon = null;
-        target = null;
+        headerTitle = 'Your drifts';
         break;
       case 'Start':
-        // console.log('LeftBtn case_2');
-        icon = <Icon.ChevronLeft {...iconProps}/>;
+        leftIcon = <Icon.ChevronLeft {...iconProps}/>;
+        headerTitle = 'Start here';
         break;
       case 'Overview':
-        // console.log('LeftBtn case_3');
-        icon = <Icon.ChevronsLeft {...iconProps}/>;
+        leftIcon = <Icon.ChevronsLeft {...iconProps}/>;
+        headerTitle = destination ? `${destination}` : '';
         break;
       case 'Step':
-        // console.log('LeftBtn case_4');
-        icon = <Icon.ChevronLeft {...iconProps}/>;
-        target = `/${id}`
+        leftIcon = <Icon.ChevronLeft {...iconProps}/>;
+        headerTitle = length ? `Step ${stepIndex} / ${length}` : '';
+        target = `/${driftId}`;
         break;
       default:
-        console.log('LeftBtn case_default');
     }
+
     return (
-      <Link to={`${target}`} className={show ? "header-link" : "sublink hidden"} >
-        {icon}
+      <Link
+        to={`${target}`}
+        className={show ? "header-btn left" : "header-btn left disabled"}
+      >
+        {leftIcon}
       </Link>
     )
   }
 
-  const RightBtn = ({ setToggle }) => {
+  const RightBtn = () => {
     return (
-      <button className="header-btn" onClick={setToggle}>
+      <button
+        className="header-btn right"
+        type="button"
+        onClick={setToggle}
+      >
         <Icon.Menu {...iconProps}/>
       </button>
     )
   }
 
+
+  const HeaderTitle = () => {
+    return (
+      <div className="header-title">
+        {headerTitle}
+      </div>
+    )
+  }
   
+
   return (
     <div className="header">
-      <LeftBtn title={title}/>
-      <p className="header-title">{title}</p>
-      <RightBtn setToggle={setToggle}/>
+      <LeftBtn />
+      <HeaderTitle />
+      <RightBtn />
     </div>
   )
 }
 
-export default SubHeader
+export default Header

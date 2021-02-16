@@ -57,7 +57,7 @@
   height: calc(100% - var(--hdr-h));
   overflow: auto;
   font-family: inherit;
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: var(--sm);
 }
 

@@ -1,17 +1,18 @@
 :root {
-  --main-font: 'Lekton', 'Trebuchet MS', sans-serif;
-  /* --pink:rgb(204, 145, 185); */
+  --main-font: 'Lato', 'Trebuchet MS', 'Helvetica',sans-serif;
+  --second-font: 'Lekton', 'Consolas', 'Menlo', monospace;
   --pink: rgb(192, 104, 164);
+  --pink-dark: rgb(167, 67, 135);
   --light: rgb(243, 237, 236);
   --dark: rgb(42, 39, 38);
   --blue: rgb(141, 182, 193);
-  --hdr-h: 90px;
-  --btn-h: 90px;
-  --space-one: 20px;
-  --lg: 1.8rem;
-  --md: 1.4rem;
-  --sm: 1.2rem;
   --speed: 500ms;
+  --hdr-h: 80px;
+  --btn-h: 60px;
+  --space-one: 15px;
+  --lg: 1.3rem;
+  --md: 1.0rem;
+  --sm: 0.85rem;
 }
 * {
   margin: 0;
@@ -22,7 +23,6 @@ body {
   --dark-gray: #1f1f1f;
   --light-gray: #353535;
   font-family: var(--main-font);
-  font-weight: 700;
   background-image: linear-gradient(
     135deg, var(--light-gray) 7.14%,
     var(--dark-gray) 7.14%,
@@ -33,6 +33,7 @@ body {
     var(--dark-gray) 100%);
   background-size: 10px 10px;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 a {
   color: inherit;
@@ -46,40 +47,77 @@ a:focus, button:focus {
 }
 button[disabled] {
   pointer-events: none;
+  color: var(--light);
+  background-color: #cacaca;
   border: 0;
-  color: #9c9c9c;
-  background: #f0f0f0;
 }
-
-.btn-big {
-  cursor: pointer;
-  border: none;
+button[disabled] > svg {
+  fill:  #acacac
+}
+/* ------------------------------------------ */
+.app-container {
+  background-color: var(--light);
+  height: 100vh;
+}
+/* CHECK PWA and ADRESSS BAR STUFF... */
+.body {
+  height: calc(100% - var(--hdr-h) - 60px);
+}
+.buttons {
   height: var(--btn-h);
+  padding: 0 var(--space-one);
+}
+/* ------------------------------------------ */
+.btn-big {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  height: var(--btn-h);
+  border-radius: calc(var(--btn-h) * 0.5);
   font-family: var(--main-font);
   font-size: var(--lg);
-  font-weight: bold;
+  background-color: var(--dark);
+  color: var(--light);
 }
-.app-container {
-  position: relative;
-  background-color: var(--light);
-  height: calc(100vh - 90px);
-  width: 520px;
-  top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  box-sizing: content-box;
-  border: 5px solid var(--light);
-  outline: 2px solid black;
+.btn-big:hover {
+  background-color: var(--pink);
+  border: 3px solid var(--pink-dark);
 }
-::-webkit-scrollbar {
-  width: 4px;
+/* ===================== For Desktop =================== */
+@media (min-width: 620px) {
+  :root {
+    --space-one: 20px;
+    --hdr-h: 90px;
+    --btn-h: 70px;
+    --space-one: 20px;
+    --lg: 1.6rem;
+    --md: 1.2rem;
+    --sm: 1.1rem;
+  }
+  .app-container {
+    position: relative;
+    height: calc(100vh - 90px);
+    width: 520px;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: content-box;
+    border: 5px solid var(--light);
+    outline: 2px solid black;
+  }
+  .body {
+    height: calc(100% - var(--hdr-h));
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-clip: content-box;
+    background-color: #b3b3b3;
+    border: 2px solid transparent;
+  }
 }
-::-webkit-scrollbar-thumb {
-  background-color: #b3b3b3;
-  border: 1px solid transparent;
-  background-clip: content-box;
-  border-radius: 2px;
-}
+

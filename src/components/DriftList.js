@@ -1,68 +1,73 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import * as Icon from 'react-feather'
+import { Link, useHistory } from 'react-router-dom'
 import Header from './Header'
-// import DriftListThumb from './DriftListThumb'
+import * as Icon from 'react-feather'
 import './DriftList.css'
 
 
-const DriftListThumb = ({ id, title, time, steps }) => {
+const DriftThumb = ({ id, title, time, steps }) => {
+  const history = useHistory();
   const iconProps = {
-    display: 'block',
-    color: 'rgb(36, 36, 36)',
+    color: '#2A2726',
     size: 36,
     strokeWidth: 1
   }
-
+  const handleClick = () => {
+    history.push(`/${id}`);
+    // setDrift(id);
+  }
   return (
-    <div className="drift-thumb">
+    <div className="drift-thumb" onClick={handleClick}>
       <ul className="drift-thumb-list">
-        <li>
-          <span> intended destination </span> {title}
-        </li>
-        <li><span> time </span> {time} </li>
+        <li><span> destination </span>{title}</li>
+        <li> {time} </li>
         <li>
           <span> steps completed </span>
-          {steps.filter(e => e.completed !== false).length} / {steps.length}
+          {steps.filter(e => e.completed.length).length} / {steps.length}
         </li>
       </ul>
-      <Link to={`/${id}`} className="drift-thumb-arrow">
+      {/* <Link to={`/${id}`} className="drift-thumb-arrow">
           <Icon.ChevronRight {...iconProps}/>
-      </Link>
+      </Link> */}
+      <div className="drift-thumb-arrow">
+        <Icon.ChevronRight {...iconProps}/>
+      </div>
     </div>
   )
 }
 
-const DriftList = ({ drifts, setToggle }) => {
 
+const DriftList = ({ drifts, setToggle }) => {
   const info = { title: 'DriftList' };
   const iconProps = {
     color: 'white',
     size: 42,
     strokeWidth: 1
-  };
-
-
+  }
   return (
     <>
-      <Header title={info.title} setToggle={setToggle}/>
-      <div className="drift-list">
-        {drifts.map(item => 
-          <DriftListThumb
-            key={item.id}
-            id={item.id}
-            title={item.dest}
-            time={item.date}
-            steps={item.steps}/>
-        )}
-        <Link to="/start" className="btn-big add-btn">
-          <Icon.Plus {...iconProps}/>
-        </Link>
+      <Header info={info} setToggle={setToggle}/>
+      <div className="body">
+        <div className="drift-list">
+          {drifts.map(e => 
+            <DriftThumb
+              key={e.id}
+              id={e.id}
+              title={e.dest}
+              time={e.date}
+              steps={e.steps}
+            />
+          )}
+        </div>
+        <div className="buttons">
+          <Link className="btn-big add-btn" to="/start">
+            <Icon.Plus {...iconProps}/>
+          </Link>
+        </div>
       </div>
     </>
 
   );
 }
-
 
 export default DriftList

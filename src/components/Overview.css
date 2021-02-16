@@ -1,17 +1,17 @@
-.overview {
-  height: calc(100% - var(--hdr-h));
-  padding: 0 var(--space-one);
-}
 /* ------------------------------------------ */
 .steps-list {
-  height: calc(100% - var(--btn-h) - var(--space-one)*2);
+  height: calc(100% - var(--btn-h) - var(--space-one) * 2);
   overflow-y: auto;
   margin-bottom: var(--space-one);
+  padding: 0 var(--space-one);
 }
+/* --------------- StepThumb ---------------- */
 .step-thumb {
   display: flex;
   align-items: center;
   height: 40px;
+  font-family: var(--second-font);
+  font-weight: bold;
 }
 .step-thumb-item {
   font-size: var(--sm);
@@ -20,7 +20,7 @@
   overflow: hidden;
 }
 .step-thumb-item:first-child {
-  color: var(--pink);
+  color: crimson;
 }
 .step-thumb-item:nth-child(2) {
   padding-left: 0.6em;
@@ -31,26 +31,18 @@
 }
 .step-thumb-arrow.deactive {
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.3;
 }
-
 /* ------------------------------------------ */
-
-.proceed-btn {
-  width: calc(100% -  var(--btn-h) - var(--space-one));
+.btn-big.proceed-btn {
   float: right;
-  background-color: var(--dark);
-  color: var(--light);
+  width: calc(100% - var(--btn-h) - var(--space-one));
 }
-.proceed-btn:hover {
-  background-color: var(--pink);
-}
-.delete-btn {
-  width: var(--btn-h);
+.btn-big.delete-btn {
   float: left;
-  background-color: var(--dark);
-  color: var(--light);
+  width: var(--btn-h);
 }
-.delete-btn:hover {
+.btn-big.delete-btn:hover {
   background-color: crimson;
+  border: 3px solid rgb(167, 21, 50);
 }

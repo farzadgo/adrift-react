@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Dexie from 'dexie'
 import DriftList from "./components/DriftList"
@@ -12,73 +12,99 @@ import './App.css'
 const App = () => {
 
   const db = new Dexie('adriftDB');
-  db.version(1).stores({
-    drifts: "id, date, dest"
-  })
-  db.open().catch((err) => {
-      console.log(err.stack || err)
-  })
+  db.version(1).stores({ drifts: "id, date, dest, steps" });
+  db.version(2).stores({ drifts: "id, date, dest, steps" });
+  db.open().catch((err) => console.log(err.stack || err));
 
   const [toggle, setToggle] = useState(false);
   const [drifts, setDrifts] = useState([]);
-
   const toggler = () => setToggle(prev => !prev);
 
-  const addDrift = (theNewDrift) => {
-    console.log(theNewDrift);
-    db.drifts.add(theNewDrift).then(async () => {
+  const checkStep = (id, step) => {
+    db.drifts.filter(e => e.id === id).modify(async (e) => {
+      let comp = e.steps[step - 1].completed;
+      await comp.push('yes');
       let allDrifts = await db.drifts.toArray();
       setDrifts(allDrifts);
-      console.log('new drift added');
+    });
+  }
+
+  const addRecording = (blob, id, step) => {
+    db.drifts.filter(e => e.id === id).modify(async (e) => {
+      let recs = e.steps[step - 1].records;
+      await recs.push(blob);
+      let allDrifts = await db.drifts.toArray();
+      setDrifts(allDrifts);
+    });
+  }
+
+  const deleteRecording = (index, id, step) => {
+    db.drifts.filter(e => e.id === id).modify(async (e) => {
+      let recs = e.steps[step - 1].records;
+      await recs.splice(index, 1);
+      let allDrifts = await db.drifts.toArray();
+      setDrifts(allDrifts);
+    });
+  }
+
+  const addDrift = (drift) => {
+    db.drifts.add(drift).then(async () => {
+      let allDrifts = await db.drifts.toArray();
+      setDrifts(allDrifts);
+      // console.log(allDrifts);
     });
   }
 
   const deleteDrift = async (id) => {
-    console.log(id);
     db.drifts.delete(id);
     let allDrifts = await db.drifts.toArray();
     setDrifts(allDrifts);
-    console.log('the drift deleted');
   }
 
-  const getDrifts = async () => {
-    let allDrifts = await db.drifts.toArray();
-    setDrifts(allDrifts);
-    console.log('data fetched');
-  }
-
-  // Init the App
+  // init
   useEffect(() => {
+    const getDrifts = async () => {
+      let allDrifts = await db.drifts.toArray();
+      setDrifts(allDrifts);
+      console.log('data fetched');
+    }
     getDrifts();
   }, []);
 
-  // HOW TO USE A LOADING COMP (SPINNER...)
-  // const [isLoading, setIsLoading] = useState(true);
-  // {isLoading ? 'loading...' : <DriftList drifts={drifts} setToggle={toggler}/>}
 
   return (
     <Router>
       <div className="app-container">
         {toggle && <Menu setToggle={toggler}/>}
-        {/* <Menu display={toggle} setToggle={toggler}/> */}
         <Switch>
-
           <Route path="/" exact>
-            <DriftList drifts={drifts} setToggle={toggler}/>
+            <DriftList
+              drifts={drifts}
+              setToggle={toggler}
+            />
           </Route>
-
           <Route path="/start" exact>
-            <Start addDrift={addDrift} setToggle={toggler}/>
+            <Start
+              addDrift={addDrift}
+              setToggle={toggler}
+            />
           </Route>
-
-          <Route path="/:id" exact>
-            <Overview drifts={drifts} deleteDrift={deleteDrift} setToggle={toggler}/>
+          <Route path="/:driftId" exact>
+            <Overview
+              drifts={drifts}
+              deleteDrift={deleteDrift}
+              setToggle={toggler}
+            />
           </Route>
-
-          <Route path="/:id/:stepIndex" exact>
-            <Step drifts={drifts} setToggle={toggler}/>
+          <Route path="/:driftId/:stepIndex" exact>
+            <Step
+              drifts={drifts}
+              addRecording={addRecording}
+              deleteRecording={deleteRecording}
+              checkStep={checkStep}
+              setToggle={toggler}
+            />
           </Route>
-
         </Switch>
       </div>
     </Router>

@@ -1,27 +1,23 @@
+/* ------------------------------------------ */
 .start {
-  height: calc(100% - var(--hdr-h));
+  height: calc(100% - var(--btn-h) - var(--space-one) * 2);
   padding: 0 var(--space-one);
+  margin-bottom: var(--space-one);
 }
 .input {
   display: block;
-  height: calc(100% - var(--btn-h) - var(--space-one) * 2);
+  height: 100%;
   width: 100%;
-  margin-bottom: var(--space-one);
   border: 2px solid #BEBEBE;
   padding: 10px;
   resize: none;
   overflow-y: auto;
-  font-size: 0.9em;
-  font-family: 'Consolas', monospace;
-  line-height: 1.6em;
+  font-size: calc(var(--sm) * 0.9);
+  font-family: 'Consolas', 'Menlo', 'Courier', monospace;
+  line-height: 1.5rem;
+  background: whitesmoke;
 }
 .input:focus {
   outline: none;
   border: 2px solid var(--pink);
-}
-.lost-btn {
-  width: 100%;
-  border-radius: calc(var(--btn-h) * 0.5);
-  background-color: var(--dark);
-  color: var(--light);
 }

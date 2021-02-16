@@ -1,0 +1,29 @@
+@keyframes spinning-circle {
+  0% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 150.6 100.4;
+  }
+  50% {
+    stroke-dasharray: 1 250;
+  }
+  100% {
+    stroke-dashoffset: 502;
+    stroke-dasharray: 150.6 100.4;
+  }
+}
+
+.loader {
+  height: calc(100% - var(--hdr-h) * 2);
+}
+
+.spinner, .err-msg {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.spinner-circle {
+  animation: 2s linear spinning-circle infinite;
+}

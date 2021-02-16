@@ -185,7 +185,7 @@ export const deconstructor = (inp) => {
     this.newDir = _new;
     this.question = _que;
     this.records = [];
-    this.completed = false;
+    this.completed = [];
   }
 
   const createSteps = (orgs, news, ques) => {

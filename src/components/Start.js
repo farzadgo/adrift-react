@@ -38,22 +38,20 @@ const Start = ({ setToggle, addDrift }) => {
 
       newDrift = new Drift(id, date, dirObj.dest, dirObj.steps);
 
-      // /*>> adrift v1 (alpha) <<*/
+      // >> adrift v1 (alpha) <<
       // data.drifts.push(newDrift);
       // return newDrift
 
-      // /*>> adrift react dev <<*/
-      // /* to use this you need {drifts, setDrifts} in the props*/
+      // >> adrift react dev <<
       // setDrifts([...drifts, newDrift]);
 
-      /*>> adrift db version (beta) <<*/
+      // >> adrift db version (beta) <<
       addDrift(newDrift);
       setInputValue("");
 
     } else {
       alert("Wrong direction text format \nCheck the instructions please 🙄");
       setInputValue("");
-      // return
     }
   }
 
@@ -65,36 +63,35 @@ const Start = ({ setToggle, addDrift }) => {
       if (newDrift) {
         history.push(`/${newDrift.id}`);
       } else {
-        // history.push(`/`);
+        console.log('newDrift error');
       }
-      // console.log(deconstructor(inputValue));
     }
     return (
       <button 
         type="button"
-        onClick={handleClick}
         className="btn-big lost-btn"
+        onClick={handleClick}
         disabled={!inputValue ? true : false}>
         Get Lost
       </button>
     );
   }
-
-  // <Link to="/" onClick={() => createDrift(inputValue)}>
-  //   <Icon.ChevronRight />
-  // </Link>
   
   return (
     <>
-      <Header title={info.title} setToggle={setToggle}/>
-      <div className="start">
-        <textarea
-          value={inputValue}
-          onChange={e => setInputValue(e.target.value)}
-          className="input"
-          placeholder={"Type here..."}
-        />
-        <LostBtn />
+      <Header info={info} setToggle={setToggle}/>
+      <div className="body">
+        <div className="start">
+          <textarea
+            value={inputValue}
+            className="input"
+            onChange={e => setInputValue(e.target.value)}
+            placeholder={"Type here..."}
+          />
+        </div>
+        <div className="buttons">
+          <LostBtn />
+        </div>
       </div>
     </>
   )

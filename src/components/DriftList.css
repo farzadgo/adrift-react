@@ -1,21 +1,28 @@
+/* ------------------------------------------ */
 .drift-list {
-  height: calc(100% - var(--hdr-h));
+  height: calc(100% - var(--btn-h) - var(--space-one) * 2);
   overflow-y: auto;
   padding: 0 var(--space-one);
+  margin-bottom: var(--space-one);
 }
-/* --------------- DriftListThumb ---------------- */
+/* --------------- DriftThumb ---------------- */
 .drift-thumb {
   display: flex;
   align-items: center;
   background-color: var(--light);
   padding: 15px 20px;
-  margin-bottom: calc(var(--space-one) * 1.4);
+  margin-bottom: calc(var(--space-one) * 1.1);
   border: 2px solid var(--dark);
   box-shadow: 6px 6px 0 var(--dark);
+  cursor: pointer;
+  background: whitesmoke;
+}
+.drift-thumb:last-child {
+  margin-bottom: 6px;
 }
 .drift-thumb-list li {
   list-style: none;
-  font-size: 1.2em;
+  font-size: var(--md);
   line-height: 1.8em;
 }
 .drift-thumb-list span{
@@ -23,13 +30,4 @@
 }
 .drift-thumb-arrow {
   margin-left: auto;
-}
-/* ------------------- AddBtn ----------------- */
-.add-btn {
-  width: var(--btn-h);
-  position: absolute;
-  right: 90px;
-  bottom: 60px;
-  border-radius: calc(var(--btn-h) * 0.5);
-  background-color: var(--pink);
 }

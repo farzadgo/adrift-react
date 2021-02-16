@@ -19,7 +19,7 @@ const Menu = ({ setToggle }) => {
     }
     return (
       <div className="header">
-        <button className="header-btn" onClick={setToggle}>
+        <button className="header-btn right" onClick={setToggle}>
           <Icon.X {...closeBtnProps}/>
         </button>
       </div>
