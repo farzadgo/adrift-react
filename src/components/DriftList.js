@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import * as Icon from 'react-feather'
 import Header from './Header'
@@ -15,6 +15,9 @@ const DriftThumb = ({ id, title, time, steps }) => {
   const handleClick = () => {
     history.push(`/${id}`);
   }
+  // <Link to={`/${id}`} className="drift-thumb-arrow">
+  //   <Icon.ChevronRight {...iconProps}/>
+  // </Link>
   return (
     <div className="drift-thumb" onClick={handleClick}>
       <ul className="drift-thumb-list">
@@ -25,9 +28,6 @@ const DriftThumb = ({ id, title, time, steps }) => {
           {steps.filter(e => e.completed.length).length} / {steps.length}
         </li>
       </ul>
-      {/* <Link to={`/${id}`} className="drift-thumb-arrow">
-          <Icon.ChevronRight {...iconProps}/>
-      </Link> */}
       <div className="drift-thumb-arrow">
         <Icon.ChevronRight {...iconProps}/>
       </div>
