@@ -5,6 +5,46 @@ import Header from './Header'
 import './DriftList.css'
 
 
+const DriftList = ({ drifts, setToggle }) => {
+  const info = {
+    title: 'DriftList'
+  };
+  const iconProps = {
+    color: 'white',
+    size: 42,
+    strokeWidth: 1
+  }
+
+  return (
+    <>
+      <Header info={info} setToggle={setToggle}/>
+      <div className="main">
+
+        <div className="body">
+          { drifts.length ?
+            drifts.map((e, i) => 
+              <DriftThumb key={i} drift={e} />) :
+            <div className="drift-empty">
+              <p> You have not performed any drifts yet </p>
+              <p> click + button to start </p>
+            </div>
+          }
+        </div>
+
+        <div className="buttons">
+          <Link className="btn-big add-btn" to="/start">
+            <Icon.Plus {...iconProps}/>
+          </Link>
+        </div>
+
+      </div>
+    </>
+
+  );
+}
+
+export default DriftList
+
 const DriftThumb = ({ drift }) => {
   const { id, dest, date, steps } = drift;
   const history = useHistory();
@@ -32,45 +72,3 @@ const DriftThumb = ({ drift }) => {
     </div>
   )
 }
-
-
-const DriftList = ({ drifts, setToggle }) => {
-  
-  const info = {
-    title: 'DriftList'
-  };
-  const iconProps = {
-    color: 'white',
-    size: 42,
-    strokeWidth: 1
-  }
-
-  return (
-    <>
-      <Header info={info} setToggle={setToggle}/>
-      <div className="body">
-
-        <div className="drift-list">
-          { drifts.length ?
-            drifts.map((e, i) => 
-              <DriftThumb key={i} drift={e} />) :
-            <div className="drift-empty">
-              <p> You have not performed any drifts yet </p>
-              <p> click + button to start </p>
-            </div>
-          }
-        </div>
-
-        <div className="buttons">
-          <Link className="btn-big add-btn" to="/start">
-            <Icon.Plus {...iconProps}/>
-          </Link>
-        </div>
-
-      </div>
-    </>
-
-  );
-}
-
-export default DriftList

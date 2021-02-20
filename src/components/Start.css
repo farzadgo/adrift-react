@@ -1,9 +1,4 @@
 /* ------------------------------------------ */
-.start {
-  height: calc(100% - var(--btn-h) - var(--space-one) * 2.2);
-  padding: 0 var(--space-one);
-  margin-bottom: var(--space-one);
-}
 .input {
   display: block;
   height: 100%;
@@ -31,9 +26,4 @@
   border: none;
   z-index: 1;
   cursor: pointer;
-}
-@media (min-width: 620px) {
-  .sample-btn {
-    bottom: calc(var(--btn-h) + var(--space-one) * 2);
-  }
 }

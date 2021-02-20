@@ -6,6 +6,59 @@ import * as Icon from 'react-feather'
 import './Overview.css'
 
 
+const Overview = ({ drifts, setToggle, deleteDrift }) => {
+  const { driftId } = useParams();
+  const [drift, setDrift] = useState('');
+  const [steps, setSteps] = useState([]);
+  const [dest, setDest] = useState('');
+  const [completed, setCompleted] = useState([]);
+
+  const info = {
+    title: 'Overview',
+    destination: dest
+  }
+
+  const getValues = () => {
+    let arr = [];
+    let dft = drifts.filter(item => item.id === driftId)[0];
+    if (dft) {
+      setDrift(dft);
+      setDest(dft.dest);
+      setSteps(dft.steps);
+      dft.steps.forEach(e => arr = [...arr, e.completed]);
+      setCompleted(arr);
+    }
+  }
+
+  useEffect(() => {
+    getValues();
+    console.log('render Overview...');
+    return () => console.log('unmounting Overview...');
+  }, [setToggle]);
+
+  return (
+    <>
+      <Header info={info} setToggle={setToggle} />
+      {drift ?
+      <div className="main">
+        <div className="body">
+          {steps.map((e, i) =>
+            <StepThumb id={driftId} key={i} index={i} step={e} />
+          )}
+        </div>
+        <div className="buttons">
+          <DeleteBtn id={driftId} deleteDrift={deleteDrift} />
+          <ProceedBtn id={driftId} completed={completed} />
+        </div>
+      </div> :
+      <Loader />
+      }
+    </>
+  )
+}
+
+export default Overview
+
 const DeleteBtn = ({ id, deleteDrift }) => {
   const iconProps = {
     color: 'white',
@@ -74,58 +127,3 @@ const StepThumb = ({ id, index, step }) => {
     </div>
   )
 }
-
-
-const Overview = ({ drifts, setToggle, deleteDrift }) => {
-  
-  const { driftId } = useParams();
-  const [drift, setDrift] = useState('');
-  const [steps, setSteps] = useState([]);
-  const [dest, setDest] = useState('');
-  const [completed, setCompleted] = useState([]);
-
-  const info = {
-    title: 'Overview',
-    destination: dest
-  }
-
-  const getValues = () => {
-    let arr = [];
-    let dft = drifts.filter(item => item.id === driftId)[0];
-    if (dft) {
-      setDrift(dft);
-      setDest(dft.dest);
-      setSteps(dft.steps);
-      dft.steps.forEach(e => arr = [...arr, e.completed]);
-      setCompleted(arr);
-    }
-  }
-
-  useEffect(() => {
-    getValues();
-    console.log('render Overview...');
-    return () => console.log('unmounting Overview...');
-  }, [setToggle]);
-
-  return (
-    <>
-      <Header info={info} setToggle={setToggle} />
-      {drift ?
-      <div className="body">
-        <div className="steps-list">
-          {steps.map((e, i) =>
-            <StepThumb id={driftId} key={i} index={i} step={e} />
-          )}
-        </div>
-        <div className="buttons">
-          <DeleteBtn id={driftId} deleteDrift={deleteDrift} />
-          <ProceedBtn id={driftId} completed={completed} />
-        </div>
-      </div> :
-      <Loader />
-      }
-    </>
-  )
-}
-
-export default Overview

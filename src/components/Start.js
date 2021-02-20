@@ -9,7 +9,6 @@ import './Start.css'
 
 
 const Start = ({ setToggle, addDrift }) => {
-
   const [inputValue, setInputValue] = useState('');
   const info = { title: 'Start' }
   let newDrift;
@@ -103,8 +102,8 @@ const Start = ({ setToggle, addDrift }) => {
   return (
     <>
       <Header info={info} setToggle={setToggle}/>
-      <div className="body">
-        <div className="start">
+      <div className="main">
+        <div className="body">
           <textarea
             value={inputValue}
             className="input"

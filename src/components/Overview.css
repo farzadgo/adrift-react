@@ -1,10 +1,3 @@
-/* ------------------------------------------ */
-.steps-list {
-  height: calc(100% - var(--btn-h) - var(--space-one) * 2.2);
-  overflow-y: auto;
-  margin-bottom: var(--space-one);
-  padding: 0 var(--space-one);
-}
 /* --------------- StepThumb ---------------- */
 .step-thumb {
   display: flex;

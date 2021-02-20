@@ -10,7 +10,7 @@ import './App.css'
 
 
 const App = () => {
-
+  
   const db = new Dexie('adriftDB');
   db.version(1).stores({ drifts: "id, date, dest, steps" });
   db.version(2).stores({ drifts: "id, date, dest, steps" });
@@ -18,46 +18,45 @@ const App = () => {
 
   const [toggle, setToggle] = useState(false);
   const [drifts, setDrifts] = useState([]);
-  const toggler = () => setToggle(prev => !prev);
-  // const [height, setHeight] = useState(window.innerHeight);
   const [winSize, setWinSize] = useState({
     height: window.innerHeight, width: window.innerWidth
   });
 
-  const checkStep = (id, step) => {
-    db.drifts.filter(e => e.id === id).modify(async (e) => {
-      let comp = e.steps[step - 1].completed;
-      await comp.push('yes');
-      let allDrifts = await db.drifts.toArray();
-      setDrifts(allDrifts);
+  const toggler = () => setToggle(prev => !prev);
+
+  const checkStep = async (id, step) => {
+    await db.drifts.filter(e => e.id === id).modify(dft => {
+      let comp = dft.steps[step - 1].completed;
+      comp.push('yes');
     });
+    let allDrifts = await db.drifts.toArray();
+    setDrifts(allDrifts);
+    // console.log('allDrifts from checkStep: ', allDrifts);
   }
 
-  const addRecording = (blob, id, step) => {
-    // console.log(db.drifts.where('id').equals(id));
-    // console.log(db.drifts.filter(e => e.id === id));
-    db.drifts.filter(e => e.id === id).modify(async dft => {
-      await dft.steps[step - 1].records.push(blob);
-      let allDrifts = await db.drifts.toArray();
-      console.log(allDrifts);
-      setDrifts(allDrifts);
+  const addRecording = async (blob, id, step) => {
+    await db.drifts.where('id').equals(id).modify(dft => {
+      dft.steps[step - 1].records.push(blob);
     });
-    // drifts.filter(e => e.id === id)[0].steps[step - 1].records.push(blob);
-    // setDrifts(drifts);
+    let allDrifts = await db.drifts.toArray();
+    setDrifts(allDrifts);
+    // console.log('allDrifts from addRecording: ', allDrifts);
   }
 
-  const deleteRecording = (index, id, step) => {
-    db.drifts.filter(e => e.id === id).modify(async (e) => {
-      let recs = e.steps[step - 1].records;
-      await recs.splice(index, 1);
-      let allDrifts = await db.drifts.toArray();
-      setDrifts(allDrifts);
+  const deleteRecording = async (index, id, step) => {
+    await db.drifts.filter(e => e.id === id).modify(dft => {
+      let recs = dft.steps[step - 1].records;
+      recs.splice(index, 1);
     });
+    let allDrifts = await db.drifts.toArray();
+    setDrifts(allDrifts);
+    // console.log('allDrifts from deleteRecording: ', allDrifts);
   }
 
   const addDrift = (drift) => {
     db.drifts.add(drift).then(async () => {
       let allDrifts = await db.drifts.toArray();
+      console.log('allDrifts from addDrift: ', allDrifts);
       setDrifts(allDrifts);
     });
   }
@@ -65,14 +64,9 @@ const App = () => {
   const deleteDrift = async (id) => {
     db.drifts.delete(id);
     let allDrifts = await db.drifts.toArray();
+    console.log('allDrifts from deleteDrift: ', allDrifts);
     setDrifts(allDrifts);
   }
-
-  // const handlePageRefresh = (e) => {
-  //   console.log(e);
-  //   e.preventDefault();
-  //   e.returnValue = '';
-  // }
 
   // const debounceHandleResize = debounce(handleResize, 500);
   // const debounce = (callback, wait) => {
@@ -98,21 +92,20 @@ const App = () => {
       console.log('drifts from db fetched!');
     }
     getDrifts();
-    // window.addEventListener('beforeunload', handlePageRefresh);
     window.addEventListener('resize', handleResize);
-    // handleResize();
-    console.log('render app');
+    console.log('App rendering...');
     return () => {
-      // window.removeEventListener('beforeunload', handlePageRefresh);
       window.removeEventListener('resize', handleResize);
+      console.log('App unmounting...');
     }
   }, []);
 
-  console.log(winSize);
 
   return (
     <Router>
-      <div className="app-container" style={winSize.width < 620 ? {height: `${winSize.height}px`} : {height: `${winSize.height - 90}px`}}>
+      <div
+        className="app-container"
+        style={winSize.width < 620 ? {height: `${winSize.height}px`} : {height: `${winSize.height - 90}px`}}>
         {toggle && <Menu setToggle={toggler}/>}
         <Switch>
           <Route path="/" exact>

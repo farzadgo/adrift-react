@@ -59,8 +59,14 @@ button[disabled] > svg {
   background-color: var(--light);
   /* height from App.js */
 }
-.body {
+.main {
   height: calc(100% - var(--hdr-h));
+}
+.body {
+  height: calc(100% - var(--btn-h) - var(--space-one) * 2.2);
+  overflow-y: auto;
+  margin-bottom: var(--space-one);
+  padding: 0 var(--space-one);
 }
 .buttons {
   height: var(--btn-h);
@@ -98,7 +104,6 @@ button[disabled] > svg {
   }
   .app-container {
     position: relative;
-    /* height: calc(100vh - 90px); */
     width: 520px;
     top: 40px;
     left: 50%;
