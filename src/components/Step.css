@@ -1,6 +1,6 @@
 /* ------------------------------------------ */
 .step {
-  height: calc(100% - var(--btn-h) - var(--space-one) * 2);
+  height: calc(100% - var(--btn-h) - var(--space-one) * 2.2);
   overflow-y: auto;
   margin-bottom: var(--space-one);
   padding: 0 var(--space-one);
@@ -16,9 +16,13 @@
 }
 /* ------------------------------------------ */
 .step-controls {
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 .record-btn, .stop-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   --ht: var(--btn-h);
   width: var(--ht);
   height: var(--ht);

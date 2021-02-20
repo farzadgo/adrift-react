@@ -1,6 +1,6 @@
 /* ------------------------------------------ */
 .start {
-  height: calc(100% - var(--btn-h) - var(--space-one) * 2);
+  height: calc(100% - var(--btn-h) - var(--space-one) * 2.2);
   padding: 0 var(--space-one);
   margin-bottom: var(--space-one);
 }
@@ -13,8 +13,8 @@
   resize: none;
   overflow-y: auto;
   font-size: calc(var(--sm) * 0.9);
-  font-family: 'Consolas', 'Menlo', 'Courier', monospace;
-  line-height: 1.5rem;
+  font-family: 'Consolas', monospace;
+  line-height: 1.4rem;
   background: whitesmoke;
 }
 .input:focus {
@@ -23,7 +23,7 @@
 }
 .sample-btn {
   position: fixed;
-  bottom: calc(var(--btn-h) + var(--space-one) * 2 + 60px);
+  bottom: calc(var(--btn-h) + var(--space-one) * 2.2);
   right: var(--space-one);
   width: 48px;
   height: 48px;

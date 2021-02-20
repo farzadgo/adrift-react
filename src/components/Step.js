@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { useReactMediaRecorder } from 'react-media-recorder'
 import Header from './Header'
@@ -7,12 +7,13 @@ import * as Icon from 'react-feather'
 import './Step.css'
 
 
-const NextBtn = ({ stepIndex, driftId , driftLength, checkStep }) => {
+const NextBtn = ({ stepIndex, driftId , stepsLength, checkStep }) => {
   let lastStep;
   let btnText;
   const currentIndex = parseInt(stepIndex);
-  currentIndex === driftLength ? lastStep = true : lastStep = false;
+  currentIndex === stepsLength ? lastStep = true : lastStep = false;
   const history = useHistory();
+
   const handleClick = () => {
     checkStep(driftId, stepIndex);
     const nextIndex = currentIndex + 1;
@@ -22,6 +23,7 @@ const NextBtn = ({ stepIndex, driftId , driftLength, checkStep }) => {
       history.push(`/${driftId}/${nextIndex}`);
     }
   }
+
   lastStep ? btnText = 'Finish' : btnText = 'Next';
 
   return (
@@ -36,7 +38,7 @@ const NextBtn = ({ stepIndex, driftId , driftLength, checkStep }) => {
 }
 
 
-const RecordThumb = ({ index, blob, deleteRecording, driftId, stepIndex }) => {
+const RecordThumb = ({ index, blob, deleteRecording, driftId, stepIndex, delRecHere }) => {
   const iconProps = {
     color: '#2a2726',
     size: 24,
@@ -45,6 +47,7 @@ const RecordThumb = ({ index, blob, deleteRecording, driftId, stepIndex }) => {
   const audioURL = URL.createObjectURL(blob);
   const handleDelete = () => {
     deleteRecording(index, driftId, stepIndex);
+    // delRecHere(index);
   }
   return (
     <div className="record-thumb">
@@ -72,7 +75,7 @@ const RecordThumb = ({ index, blob, deleteRecording, driftId, stepIndex }) => {
 }
 
 
-const Recorder = ({ driftId, stepIndex, addRecording }) => {
+const Recorder = ({ driftId, stepIndex, addRecHere, addRecording }) => {
   const iconProps = {
     size: 28,
     strokeWidth: 0,
@@ -80,6 +83,7 @@ const Recorder = ({ driftId, stepIndex, addRecording }) => {
   }
   const handleBlob = (url, blob) => {
     addRecording(blob, driftId, stepIndex);
+    // addRecHere(blob);
   }
   const {
     status,
@@ -115,27 +119,49 @@ const Recorder = ({ driftId, stepIndex, addRecording }) => {
 
 
 const Step = ({ drifts, setToggle, addRecording, deleteRecording, checkStep }) => {
-  let drift, driftLength, step, direction;
+
   const { driftId, stepIndex } = useParams();
-  if (drifts) {
-    drift = drifts.filter(item => item.id === driftId)[0];
-  }
-  if (drift) {
-    driftLength = drift.steps.length;
-    step = drift.steps[stepIndex - 1];
-    let newDirection = step.newDir.split(' ');
-    newDirection.splice(0, 1);
-    direction = newDirection.join(' ');
-  }
+  const [step, setStep] = useState('');
+  const [records, setRecords] = useState([]);
+  const [stepsLength, setStepsLength] = useState(0);
+  const [direction, setDirection] = useState('');
+  
   const info = {
     title: 'Step',
-    length: driftLength
+    length: stepsLength
   }
+
+  // This can move up to App.js or Global Context
+  // const addRecHere = e => setRecords([...records, e]);
+  // const delRecHere = index => setRecords(records.filter((e, i) => i !== index));
+
+  const getValues = () => {
+    let stp;
+    let dft = drifts.filter(item => item.id === driftId)[0];
+    if (dft) {
+      stp = dft.steps[stepIndex - 1];
+      setStepsLength(dft.steps.length);
+    }
+    if (stp) {
+      let newDir = stp.newDir.split(' ');
+      newDir.splice(0, 1);
+      let dir = newDir.join(' ');
+      setRecords(stp.records);
+      setDirection(dir);
+      setStep(stp);
+    }
+  }
+
+  useEffect(() => {
+    getValues();
+    console.log('render Step...');
+    return () => console.log('unmounting Step...');
+  }, [setToggle]);
 
   return (
     <>
       <Header info={info} setToggle={setToggle}/>
-      { step ?
+      {step ?
       <div className="body">
         <div className="step">
 
@@ -147,12 +173,13 @@ const Step = ({ drifts, setToggle, addRecording, deleteRecording, checkStep }) =
           <Recorder
             driftId={driftId}
             stepIndex={stepIndex}
+            // addRecHere={addRecHere}
             addRecording={addRecording}
           />
 
-          {step.records.length ?
+          {records.length ?
           <div>
-            {step.records.map((e, i) =>
+            {records.map((e, i) =>
               <RecordThumb
                 key={i}
                 index={i}
@@ -160,6 +187,7 @@ const Step = ({ drifts, setToggle, addRecording, deleteRecording, checkStep }) =
                 deleteRecording={deleteRecording}
                 driftId={driftId}
                 stepIndex={stepIndex}
+                // delRecHere={delRecHere}
               />
             )}
           </div> :
@@ -175,7 +203,7 @@ const Step = ({ drifts, setToggle, addRecording, deleteRecording, checkStep }) =
           <NextBtn
             stepIndex={stepIndex}
             driftId={driftId}
-            driftLength={driftLength}
+            stepsLength={stepsLength}
             checkStep={checkStep}
           />
         </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, useHistory, Link } from 'react-router-dom'
 import Header from './Header'
 import Loader from './Loader'
@@ -29,12 +29,10 @@ const DeleteBtn = ({ id, deleteDrift }) => {
 }
 
 
-const ProceedBtn = ({ drift }) => {
+const ProceedBtn = ({ id, completed }) => {
   let btnText;
-  let arr = [];
   const history = useHistory();
-  drift.steps.forEach(e => arr = [...arr, e.completed]);
-  const currentStep = arr.findIndex(e => !e.length) + 1;
+  const currentStep = completed.findIndex(e => !e.length) + 1;
   if (currentStep === 0) {
     btnText =  'Completed'
   } else if (currentStep === 1) {
@@ -43,7 +41,7 @@ const ProceedBtn = ({ drift }) => {
     btnText =  'Continue'
   }
   const handleClick = () => {
-    history.push(`/${drift.id}/${currentStep}`);
+    history.push(`/${id}/${currentStep}`);
   }
   return (
     <button
@@ -57,7 +55,8 @@ const ProceedBtn = ({ drift }) => {
 }
 
 
-const StepThumb = ({ index, orgDir, newDir, completed, id }) => {
+const StepThumb = ({ id, index, step }) => {
+  const { orgDir, newDir, completed } = step;
   const iconProps = {
     color: '#2A2726',
     size: 32,
@@ -78,19 +77,35 @@ const StepThumb = ({ index, orgDir, newDir, completed, id }) => {
 
 
 const Overview = ({ drifts, setToggle, deleteDrift }) => {
-  let drift, steps, dest;
+  
   const { driftId } = useParams();
-  if (drifts) {
-    drift = drifts.filter(item => item.id === driftId)[0]
-  }
-  if (drift) {
-    steps = drift.steps;
-    dest = drift.dest;
-  }
+  const [drift, setDrift] = useState('');
+  const [steps, setSteps] = useState([]);
+  const [dest, setDest] = useState('');
+  const [completed, setCompleted] = useState([]);
+
   const info = {
     title: 'Overview',
     destination: dest
   }
+
+  const getValues = () => {
+    let arr = [];
+    let dft = drifts.filter(item => item.id === driftId)[0];
+    if (dft) {
+      setDrift(dft);
+      setDest(dft.dest);
+      setSteps(dft.steps);
+      dft.steps.forEach(e => arr = [...arr, e.completed]);
+      setCompleted(arr);
+    }
+  }
+
+  useEffect(() => {
+    getValues();
+    console.log('render Overview...');
+    return () => console.log('unmounting Overview...');
+  }, [setToggle]);
 
   return (
     <>
@@ -99,19 +114,12 @@ const Overview = ({ drifts, setToggle, deleteDrift }) => {
       <div className="body">
         <div className="steps-list">
           {steps.map((e, i) =>
-            <StepThumb
-              key={i}
-              index={i}
-              orgDir={e.orgDir}
-              newDir={e.newDir}
-              completed={e.completed}
-              id={driftId}
-            />
+            <StepThumb id={driftId} key={i} index={i} step={e} />
           )}
         </div>
         <div className="buttons">
           <DeleteBtn id={driftId} deleteDrift={deleteDrift} />
-          <ProceedBtn drift={drift} />
+          <ProceedBtn id={driftId} completed={completed} />
         </div>
       </div> :
       <Loader />

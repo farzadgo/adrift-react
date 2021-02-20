@@ -19,6 +19,10 @@ const App = () => {
   const [toggle, setToggle] = useState(false);
   const [drifts, setDrifts] = useState([]);
   const toggler = () => setToggle(prev => !prev);
+  // const [height, setHeight] = useState(window.innerHeight);
+  const [winSize, setWinSize] = useState({
+    height: window.innerHeight, width: window.innerWidth
+  });
 
   const checkStep = (id, step) => {
     db.drifts.filter(e => e.id === id).modify(async (e) => {
@@ -30,12 +34,16 @@ const App = () => {
   }
 
   const addRecording = (blob, id, step) => {
-    db.drifts.filter(e => e.id === id).modify(async (e) => {
-      let recs = e.steps[step - 1].records;
-      await recs.push(blob);
+    // console.log(db.drifts.where('id').equals(id));
+    // console.log(db.drifts.filter(e => e.id === id));
+    db.drifts.filter(e => e.id === id).modify(async dft => {
+      await dft.steps[step - 1].records.push(blob);
       let allDrifts = await db.drifts.toArray();
+      console.log(allDrifts);
       setDrifts(allDrifts);
     });
+    // drifts.filter(e => e.id === id)[0].steps[step - 1].records.push(blob);
+    // setDrifts(drifts);
   }
 
   const deleteRecording = (index, id, step) => {
@@ -60,20 +68,51 @@ const App = () => {
     setDrifts(allDrifts);
   }
 
+  // const handlePageRefresh = (e) => {
+  //   console.log(e);
+  //   e.preventDefault();
+  //   e.returnValue = '';
+  // }
+
+  // const debounceHandleResize = debounce(handleResize, 500);
+  // const debounce = (callback, wait) => {
+  //   let timeout = null
+  //   return (...args) => {
+  //     const next = () => callback(...args)
+  //     clearTimeout(timeout)
+  //     timeout = setTimeout(next, wait)
+  //   }
+  // }
+
+  const handleResize = () => {
+    setWinSize({
+      height: window.innerHeight,
+      width: window.innerWidth
+    });
+  }
+
   useEffect(() => {
     const getDrifts = async () => {
       let allDrifts = await db.drifts.toArray();
       setDrifts(allDrifts);
-      console.log('data fetched');
+      console.log('drifts from db fetched!');
     }
     getDrifts();
-    // add window resize listener here
+    // window.addEventListener('beforeunload', handlePageRefresh);
+    window.addEventListener('resize', handleResize);
+    // handleResize();
+    console.log('render app');
+    return () => {
+      // window.removeEventListener('beforeunload', handlePageRefresh);
+      window.removeEventListener('resize', handleResize);
+    }
   }, []);
 
+  console.log(winSize);
 
   return (
     <Router>
-      <div className="app-container">
+      <div className="app-container" style={winSize.width < 620 ? {height: `${winSize.height}px`} : {height: `${winSize.height - 90}px`}}>
         {toggle && <Menu setToggle={toggler}/>}
         <Switch>
           <Route path="/" exact>

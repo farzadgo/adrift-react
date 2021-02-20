@@ -1,6 +1,6 @@
 /* ------------------------------------------ */
 .steps-list {
-  height: calc(100% - var(--btn-h) - var(--space-one) * 2);
+  height: calc(100% - var(--btn-h) - var(--space-one) * 2.2);
   overflow-y: auto;
   margin-bottom: var(--space-one);
   padding: 0 var(--space-one);
@@ -9,12 +9,12 @@
 .step-thumb {
   display: flex;
   align-items: center;
-  height: 40px;
+  height: 44px;
   font-family: var(--second-font);
   font-weight: bold;
 }
 .step-thumb-item {
-  font-size: var(--sm);
+  font-size: var(--md);
   width: 50%;
   white-space: nowrap;
   overflow: hidden;
@@ -26,12 +26,15 @@
   padding-left: 0.6em;
 }
 .step-thumb-arrow {
-  /* margin-left: auto; */
   display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  min-width: 36px;
 }
 .step-thumb-arrow.deactive {
   pointer-events: none;
-  opacity: 0.3;
+  opacity: 0.2;
 }
 /* ------------------------------------------ */
 .btn-big.proceed-btn {

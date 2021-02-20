@@ -33,27 +33,33 @@
 .menu-item.link a {
   display: flex;
   align-items: center;
+  padding-right: 10px;
 }
 /* ------------- MENU ICONS ------------- */
-.menu .icon-left {
+.menu-item .icon-left {
   display: flex;
 }
-.menu .icon-right {
+.menu-item .icon-right {
   display: flex;
   margin-left: auto;
 }
-.menu .icon-left svg,
-.menu .icon-right svg {
+.menu-item .icon-left svg,
+.menu-item .icon-right svg {
   stroke-width: 1px;
   width: 36px;
   height: 36px;
 }
-.menu .icon-left svg {
+.menu-item .icon-left svg {
   margin-right: 20px;
+}
+.menu-item.link .icon-left svg {
+  width: 28px;
+  height: 28px;
+  margin-left: 8px;
 }
 /* ------------- MENU CONTENT ------------- */
 .menu-content {
-  padding: 0 calc(var(--space-one) * 1.5);
+  padding: 0 var(--space-one);
   height: calc(100% - var(--hdr-h));
   overflow: auto;
   font-size: var(--md);

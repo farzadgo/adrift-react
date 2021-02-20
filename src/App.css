@@ -9,7 +9,7 @@
   --speed: 500ms;
   --hdr-h: 80px;
   --btn-h: 60px;
-  --space-one: 15px;
+  --space-one: 20px;
   --lg: 1.3rem;
   --md: 1.0rem;
   --sm: 0.85rem;
@@ -57,11 +57,10 @@ button[disabled] > svg {
 /* ------------------------------------------ */
 .app-container {
   background-color: var(--light);
-  height: 100vh;
+  /* height from App.js */
 }
-/* CHECK PWA and ADRESSS BAR STUFF... */
 .body {
-  height: calc(100% - var(--hdr-h) - 60px);
+  height: calc(100% - var(--hdr-h));
 }
 .buttons {
   height: var(--btn-h);
@@ -99,7 +98,7 @@ button[disabled] > svg {
   }
   .app-container {
     position: relative;
-    height: calc(100vh - 90px);
+    /* height: calc(100vh - 90px); */
     width: 520px;
     top: 40px;
     left: 50%;
@@ -108,11 +107,8 @@ button[disabled] > svg {
     border: 5px solid var(--light);
     outline: 2px solid black;
   }
-  .body {
-    height: calc(100% - var(--hdr-h));
-  }
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
   ::-webkit-scrollbar-thumb {
     background-clip: content-box;

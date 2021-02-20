@@ -5,24 +5,22 @@ import Header from './Header'
 import './DriftList.css'
 
 
-const DriftThumb = ({ id, title, time, steps }) => {
+const DriftThumb = ({ drift }) => {
+  const { id, dest, date, steps } = drift;
   const history = useHistory();
   const iconProps = {
     color: '#2A2726',
-    size: 36,
+    size: 32,
     strokeWidth: 1
   }
   const handleClick = () => {
     history.push(`/${id}`);
   }
-  // <Link to={`/${id}`} className="drift-thumb-arrow">
-  //   <Icon.ChevronRight {...iconProps}/>
-  // </Link>
   return (
     <div className="drift-thumb" onClick={handleClick}>
       <ul className="drift-thumb-list">
-        <li><span> destination </span>{title}</li>
-        <li> {time} </li>
+        <li><span> destination </span>{dest}</li>
+        <li> {date} </li>
         <li>
           <span> steps completed </span>
           {steps.filter(e => e.completed.length).length} / {steps.length}
@@ -37,7 +35,10 @@ const DriftThumb = ({ id, title, time, steps }) => {
 
 
 const DriftList = ({ drifts, setToggle }) => {
-  const info = { title: 'DriftList' };
+  
+  const info = {
+    title: 'DriftList'
+  };
   const iconProps = {
     color: 'white',
     size: 42,
@@ -50,19 +51,14 @@ const DriftList = ({ drifts, setToggle }) => {
       <div className="body">
 
         <div className="drift-list">
-        { drifts.length ?
-          drifts.map(e => 
-            <DriftThumb
-              key={e.id}
-              id={e.id}
-              title={e.dest}
-              time={e.date}
-              steps={e.steps}
-            />) :
-          <div className="drift-empty">
-            <p> You have not performed any drifts yet </p>
-            <p> click + button to start </p>
-          </div> }
+          { drifts.length ?
+            drifts.map((e, i) => 
+              <DriftThumb key={i} drift={e} />) :
+            <div className="drift-empty">
+              <p> You have not performed any drifts yet </p>
+              <p> click + button to start </p>
+            </div>
+          }
         </div>
 
         <div className="buttons">
