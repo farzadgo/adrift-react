@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import * as Icon from 'react-feather'
 import Header from './Header'
 import { deconstructor } from '../data/deconstructor'
-import { sampleDirections } from '../data/sample-directions'
+import { sampleDirections } from '../data/sampleDirections'
 import './Start.css'
 
 

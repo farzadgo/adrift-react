@@ -1,0 +1,30 @@
+.swiper-container {
+  height: calc(100% - var(--hdr-h));
+}
+.swiper-pagination.swiper-pagination-progressbar {
+  background: none;
+  height: 2px;
+}
+.swiper-pagination-progressbar
+.swiper-pagination-progressbar-fill {
+  background: var(--pink);
+}
+.swiper-slide {
+  top: calc(var(--space-one) * 0.5);
+  list-style: none;
+}
+.slide-img {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 80%;
+  max-height: 65vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.slide-txt {
+  font-size: var(--sm);
+  font-weight: 300;
+  line-height: 1.6em;
+  padding: 10px var(--space-one)
+}

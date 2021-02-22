@@ -63,6 +63,7 @@
   height: calc(100% - var(--hdr-h));
   overflow: auto;
   font-size: var(--md);
+  font-weight: 300;
 }
 .menu-content p {
   line-height: 1.6em;

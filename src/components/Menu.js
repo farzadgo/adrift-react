@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import * as Icon from 'react-feather'
 import './Menu.css'
+import Instructions from './Instructions'
 
 
 const Menu = ({ setToggle }) => {
@@ -59,24 +60,60 @@ const Menu = ({ setToggle }) => {
   
             <CloseMenu setToggle={setToggle}/>
   
-            <MenuItem><h3>Instructions</h3></MenuItem>
+            <MenuItem 
+              goToMenu="insts"
+              rightIcon={<Icon.ChevronRight/>}
+            >
+              <h3>Instructions</h3>
+            </MenuItem>
   
-            <MenuItem goToMenu="about" rightIcon={<Icon.ChevronRight />}>
+            <MenuItem
+              goToMenu="about"
+              rightIcon={<Icon.ChevronRight />}
+            >
               <h3>About Adrift</h3>
             </MenuItem>
   
-            <MenuItem goToMenu="theory" rightIcon={<Icon.ChevronRight />}>
+            <MenuItem
+              goToMenu="theory"
+              rightIcon={<Icon.ChevronRight />}
+            >
               <h3>Theoretical background</h3>
             </MenuItem>
   
-            <MenuItem goToMenu="dev" rightIcon={<Icon.ChevronRight />}>
+            <MenuItem
+              goToMenu="dev"
+              rightIcon={<Icon.ChevronRight />}
+            >
               <h3>Development</h3>
             </MenuItem>
   
-            <MenuItem goToMenu="refs" rightIcon={<Icon.ChevronRight />}>
+            <MenuItem
+              goToMenu="refs" 
+              rightIcon={<Icon.ChevronRight />}
+            >
               <h3>Links and references</h3>
             </MenuItem>
   
+          </div>
+        </CSSTransition>
+
+
+        <CSSTransition
+          in={activeMenu === 'insts'}
+          timeout={500}
+          classNames="menu-secondary"
+          unmountOnExit
+        >
+          <div className="menu">
+            <MenuItem 
+              goToMenu="main"
+              leftIcon={<Icon.ChevronLeft />}
+              title
+            >
+              <h2>Instructions</h2>
+            </MenuItem>
+            <Instructions />
           </div>
         </CSSTransition>
   
@@ -84,7 +121,8 @@ const Menu = ({ setToggle }) => {
           in={activeMenu === 'about'}
           timeout={500}
           classNames="menu-secondary"
-          unmountOnExit>
+          unmountOnExit
+        >
           <div className="menu">
             <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />}  title>
               <h2>Adrift</h2>
@@ -107,7 +145,8 @@ const Menu = ({ setToggle }) => {
           in={activeMenu === 'theory'}
           timeout={500}
           classNames="menu-secondary"
-          unmountOnExit>
+          unmountOnExit
+        >
           <div className="menu">
             <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />} title>
               <h2>Theory</h2>
@@ -130,7 +169,8 @@ const Menu = ({ setToggle }) => {
           in={activeMenu === 'dev'}
           timeout={500}
           classNames="menu-secondary"
-          unmountOnExit>
+          unmountOnExit
+        >
           <div className="menu">
             <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />} title>
               <h2>Development</h2>
@@ -153,7 +193,8 @@ const Menu = ({ setToggle }) => {
           in={activeMenu === 'refs'}
           timeout={500}
           classNames="menu-secondary"
-          unmountOnExit>
+          unmountOnExit
+        >
           <div className="menu">
             <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />} title>
               <h2>Links</h2>
@@ -182,8 +223,6 @@ const Menu = ({ setToggle }) => {
             <RefItem leftIcon={<Icon.ExternalLink />} href="https://developer.mozilla.org/en-US/docs/Web/API">
               Web APIs (MDN)
             </RefItem>
-            
-            
           </div>
         </CSSTransition>
       </div>

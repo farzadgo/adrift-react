@@ -25,7 +25,7 @@ const App = () => {
   const toggler = () => setToggle(prev => !prev);
 
   const checkStep = async (id, step) => {
-    await db.drifts.filter(e => e.id === id).modify(dft => {
+    db.drifts.filter(e => e.id === id).modify(dft => {
       let comp = dft.steps[step - 1].completed;
       comp.push('yes');
     });
@@ -35,7 +35,7 @@ const App = () => {
   }
 
   const addRecording = async (blob, id, step) => {
-    await db.drifts.where('id').equals(id).modify(dft => {
+    db.drifts.where('id').equals(id).modify(dft => {
       dft.steps[step - 1].records.push(blob);
     });
     let allDrifts = await db.drifts.toArray();
@@ -44,7 +44,7 @@ const App = () => {
   }
 
   const deleteRecording = async (index, id, step) => {
-    await db.drifts.filter(e => e.id === id).modify(dft => {
+    db.drifts.filter(e => e.id === id).modify(dft => {
       let recs = dft.steps[step - 1].records;
       recs.splice(index, 1);
     });
