@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { v4 as uuidv4 } from 'uuid'
 import * as Icon from 'react-feather'
 import Header from './Header'
 import { deconstructor } from '../data/deconstructor'
@@ -12,6 +11,12 @@ const Start = ({ setToggle, addDrift }) => {
   const [inputValue, setInputValue] = useState('');
   const info = { title: 'Start' }
   let newDrift;
+
+  // My ID Generator
+  const idGen = () => {
+    let num = Math.random().toString(36).substring(2, 15);
+    return num
+  }
 
   // DRIFT CONSTRUCTOR
   const Drift = function(id, date, dst, stps) {
@@ -25,7 +30,8 @@ const Start = ({ setToggle, addDrift }) => {
     const dirObj = deconstructor(inp);
     if (!!Object.values(dirObj).every(item => item)) {
       // ID
-      const id = uuidv4();
+      // const id = uuidv4();
+      const id = idGen();
       // DATE
       let options = {
         weekday: 'short',
