@@ -56,7 +56,7 @@ const App = () => {
   const addDrift = (drift) => {
     db.drifts.add(drift).then(async () => {
       let allDrifts = await db.drifts.toArray();
-      console.log('allDrifts from addDrift: ', allDrifts);
+      // console.log('allDrifts from addDrift: ', allDrifts);
       setDrifts(allDrifts);
     });
   }
@@ -64,7 +64,7 @@ const App = () => {
   const deleteDrift = async (id) => {
     db.drifts.delete(id);
     let allDrifts = await db.drifts.toArray();
-    console.log('allDrifts from deleteDrift: ', allDrifts);
+    // console.log('allDrifts from deleteDrift: ', allDrifts);
     setDrifts(allDrifts);
   }
 
