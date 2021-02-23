@@ -3,11 +3,13 @@
   display: flex;
   align-items: center;
   height: 44px;
-  font-family: var(--second-font);
+  font-family: var(--code-font);
   font-weight: bold;
+  border-bottom: 1px dotted gray;
+  cursor: pointer;
 }
 .step-thumb-item {
-  font-size: var(--md);
+  font-size: var(--sm);
   width: 50%;
   white-space: nowrap;
   overflow: hidden;
@@ -22,12 +24,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 36px;
-  min-width: 36px;
 }
 .step-thumb-arrow.deactive {
   pointer-events: none;
-  opacity: 0.2;
+  opacity: 0.1;
 }
 /* ------------------------------------------ */
 .btn-big.proceed-btn {

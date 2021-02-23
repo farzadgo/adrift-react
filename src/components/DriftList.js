@@ -10,8 +10,8 @@ const DriftList = ({ drifts, setToggle }) => {
     title: 'DriftList'
   };
   const iconProps = {
-    color: 'white',
-    size: 42,
+    color: '#F3F1F1',
+    size: 32,
     strokeWidth: 1
   }
 
@@ -50,7 +50,7 @@ const DriftThumb = ({ drift }) => {
   const history = useHistory();
   const iconProps = {
     color: '#2A2726',
-    size: 32,
+    size: 28,
     strokeWidth: 1
   }
   const handleClick = () => {

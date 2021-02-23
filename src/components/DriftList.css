@@ -6,7 +6,7 @@
   padding: 10px var(--space-one);
   margin-bottom: calc(var(--space-one) * 1.2);
   border: 2px solid var(--dark);
-  box-shadow: 6px 6px 0 var(--dark);
+  box-shadow: 4px 4px 0 var(--dark);
   cursor: pointer;
   background: whitesmoke;
 }
@@ -19,7 +19,7 @@
   line-height: 1.8em;
 }
 .drift-thumb-list span{
-  color: var(--pink);
+  color: crimson;
 }
 .drift-thumb-arrow {
   margin-left: auto;

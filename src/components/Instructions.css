@@ -18,13 +18,13 @@
   width: auto;
   height: auto;
   max-width: 80%;
-  max-height: 65vh;
+  max-height: 60vh;
   left: 50%;
   transform: translateX(-50%);
 }
 .slide-txt {
-  font-size: var(--sm);
+  font-size: (var(--md));
   font-weight: 300;
-  line-height: 1.6em;
+  line-height: 1.4em;
   padding: 10px var(--space-one)
 }

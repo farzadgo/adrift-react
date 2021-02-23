@@ -1,15 +1,16 @@
 :root {
   --main-font: 'Jost', 'Trebuchet MS', 'Helvetica',sans-serif;
-  --second-font: 'Lekton', 'Consolas', 'Menlo', monospace;
+  --code-font: 'Lekton', 'Consolas', 'Menlo', monospace;
+  --serif-font: 'Bitter', serif;
   --pink: rgb(192, 104, 164);
   --pink-dark: rgb(167, 67, 135);
-  --light: rgb(243, 237, 236);
-  --dark: rgb(42, 39, 38);
+  --light: rgb(243, 241, 241);
+  --dark: rgb(34, 31, 31);
   --blue: rgb(141, 182, 193);
   --speed: 500ms;
-  --hdr-h: 80px;
-  --btn-h: 60px;
-  --space-one: 20px;
+  --hdr-h: 60px;
+  --btn-h: 50px;
+  --space-one: 15px;
   --lg: 1.3rem;
   --md: 1.0rem;
   --sm: 0.85rem;
@@ -61,6 +62,10 @@ button[disabled] > svg {
 }
 .main {
   height: calc(100% - var(--hdr-h));
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 .body {
   height: calc(100% - var(--btn-h) - var(--space-one) * 2.2);

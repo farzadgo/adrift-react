@@ -14,6 +14,8 @@ const Step = ({ drifts, setToggle, addRecording, deleteRecording, checkStep }) =
   const [stepsLength, setStepsLength] = useState(0);
   const [direction, setDirection] = useState('');
   
+  const [btnStatus, setBtnStatus] = useState('set');
+
   const info = {
     title: 'Step',
     length: stepsLength
@@ -58,6 +60,7 @@ const Step = ({ drifts, setToggle, addRecording, deleteRecording, checkStep }) =
             driftId={driftId}
             stepIndex={stepIndex}
             addRecording={addRecording}
+            setBtnStatus={setBtnStatus}
           />
 
           {records.length ?
@@ -74,7 +77,7 @@ const Step = ({ drifts, setToggle, addRecording, deleteRecording, checkStep }) =
             )}
           </div> :
           <div className="no-records">
-            <p> No recordings here ツ </p>
+            <p> No recordings yet ツ </p>
           </div>
           }
 
@@ -87,6 +90,7 @@ const Step = ({ drifts, setToggle, addRecording, deleteRecording, checkStep }) =
             driftId={driftId}
             stepsLength={stepsLength}
             checkStep={checkStep}
+            btnStatus={btnStatus}
           />
         </div>
         }
@@ -99,7 +103,7 @@ const Step = ({ drifts, setToggle, addRecording, deleteRecording, checkStep }) =
 
 export default Step
 
-const NextBtn = ({ stepIndex, driftId , stepsLength, checkStep }) => {
+const NextBtn = ({ stepIndex, driftId , stepsLength, checkStep, btnStatus }) => {
   let lastStep;
   let btnText;
   const currentIndex = parseInt(stepIndex);
@@ -123,6 +127,7 @@ const NextBtn = ({ stepIndex, driftId , stepsLength, checkStep }) => {
       className="btn-big next-btn"
       type="button"
       onClick={handleClick}
+      disabled={btnStatus ? false : true}
     >
       <span> {btnText} </span>
     </button>
@@ -130,15 +135,11 @@ const NextBtn = ({ stepIndex, driftId , stepsLength, checkStep }) => {
 }
 
 
-const Recorder = ({ driftId, stepIndex, addRecording }) => {
-  const iconProps = {
-    size: 28,
-    strokeWidth: 0,
-    fill: '#2A2726'
-  }
+const Recorder = ({ driftId, stepIndex, addRecording, setBtnStatus }) => {
   const handleBlob = (url, blob) => {
     addRecording(blob, driftId, stepIndex);
   }
+
   const {
     status,
     startRecording,
@@ -147,25 +148,39 @@ const Recorder = ({ driftId, stepIndex, addRecording }) => {
   } = useReactMediaRecorder({
     video: false,
     onStop: (blobUrl, blob) => handleBlob(blobUrl, blob)
-  });
-  let recColor;
-  status === 'recording' ? recColor = '#DC143C' : recColor = '#2A2726';
+  })
+
+  let recProps;
+  const iconProps = {
+    size: 24,
+    strokeWidth: 0,
+  }
   
+  if (status !== 'recording') {
+    iconProps.fill = '#2A2726';
+    setBtnStatus('set');
+    recProps = {
+      icon: <Icon.Circle {...iconProps} />,
+      onClick: startRecording,
+    }
+  } else {
+    setBtnStatus('');
+    iconProps.fill = '#DC143C';
+    recProps = {
+      icon: <Icon.Square {...iconProps} />,
+      onClick: stopRecording,
+      style: {borderColor: iconProps.fill}
+    }
+  }
+
   return (
-    <div className="step-controls">
+    <div className="step-recorder">
       <button
-        className={status === 'recording' ? 'record-btn deactive' : 'record-btn'}
-        onClick={startRecording}
-        style={{borderColor: recColor}}
+        className="recorder-btn"
+        onClick={recProps.onClick}
+        style={recProps.style}
       >
-        <Icon.Circle {...iconProps} fill={recColor}/>
-      </button>
-      <button
-        className="stop-btn"
-        onClick={stopRecording}
-        disabled={status !== 'recording'}
-      >
-        <Icon.Square {...iconProps}/>
+        {recProps.icon}
       </button>
     </div>
   )
@@ -174,9 +189,9 @@ const Recorder = ({ driftId, stepIndex, addRecording }) => {
 
 const RecordThumb = ({ index, blob, deleteRecording, driftId, stepIndex }) => {
   const iconProps = {
-    color: '#2a2726',
-    size: 24,
-    strokeWidth: 2
+    color: '#2A2726',
+    size: 28,
+    strokeWidth: 1
   }
   const audioURL = URL.createObjectURL(blob);
   const handleDelete = () => {

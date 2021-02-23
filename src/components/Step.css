@@ -8,24 +8,21 @@
   line-height: 1.4em;
 }
 /* ------------------------------------------ */
-.step-controls {
+.step-recorder {
   display: flex;
   justify-content: center;
+  margin-bottom: var(--space-one);
 }
-.record-btn, .stop-btn {
+.recorder-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  --ht: var(--btn-h);
+  --ht: calc(var(--btn-h) * 1.2);
   width: var(--ht);
   height: var(--ht);
   border-radius: calc(var(--ht) * 0.5);
   border: 2px solid var(--dark);
-  margin: var(--space-one) 0.4em;
   cursor: pointer;
-}
-.record-btn.deactive {
-  pointer-events: none;
 }
 /* ------------------------------------------ */
 .record-thumb {
@@ -49,9 +46,11 @@
   background: none;
   border: none;
   cursor: pointer;
-  min-height: 48px;
-  min-width: 48px;
+  min-height: 40px;
+  min-width: 40px;
 }
 .no-records {
+  font-family: var(--code-font);
+  font-weight: bold;
   font-size: var(--sm);
 }

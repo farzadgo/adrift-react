@@ -9,15 +9,15 @@ const Menu = ({ setToggle }) => {
   const [activeMenu, setActiveMenu] = useState('main');
 
   const CloseMenu = ({ setToggle }) => {
-    const closeBtnProps = {
-      color: '#dbdbdb',
-      size: 36,
+    const iconProps = {
+      color: '#F3F1F1',
+      size: 28,
       strokeWidth: 1
     }
     return (
       <div className="header">
         <button className="header-btn right" onClick={setToggle}>
-          <Icon.X {...closeBtnProps}/>
+          <Icon.X {...iconProps}/>
         </button>
       </div>
     )
@@ -35,14 +35,16 @@ const Menu = ({ setToggle }) => {
     );
   }
 
-  const RefItem = ({ leftIcon, href, children }) => {
+  const LinkItem = ({ leftIcon, href, children }) => {
     return (
-      <h3 className="menu-item link">
-        <a href={href} target="_blank" rel="noreferrer">
-          <span className="icon-left">{leftIcon}</span>
-          {children}
-        </a>
-      </h3>
+      <a
+        className="menu-item link"
+        href={href} target="_blank"
+        rel="noreferrer"
+      >
+        <span className="icon-left">{leftIcon}</span>
+        {children}
+      </a>
     )
   }
 
@@ -199,30 +201,30 @@ const Menu = ({ setToggle }) => {
             <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />} title>
               <h2>Links</h2>
             </MenuItem>
-            <RefItem leftIcon={<Icon.Code />} href="https://github.com/farzadgo/adrift">
-              Source code repository
-            </RefItem>
-            <RefItem leftIcon={<Icon.ExternalLink />} href="http://digitalmedia-bremen.de/">
-              Digital Media Bremen
-            </RefItem>
-            <RefItem leftIcon={<Icon.ExternalLink />} href="https://www.hfk2020.de/">
-              University of the Arts Bremen
-            </RefItem>
-            <RefItem leftIcon={<Icon.File />} href="http://tbook.constantvzw.org/wp-content/derivedebord.pdf">
-              Theory of the Dérive (PDF)
-            </RefItem>
-            <RefItem leftIcon={<Icon.BookOpen />} href="https://en.wikipedia.org/wiki/D%C3%A9rive">
-              Dérive (Wiki)
-            </RefItem>
-            <RefItem leftIcon={<Icon.BookOpen />} href="https://en.wikipedia.org/wiki/Psychogeography">
-              Psychogeography (Wiki)
-            </RefItem>
-            <RefItem leftIcon={<Icon.ExternalLink />} href="https://www.cddc.vt.edu/sionline/">
-              Situationist International Online
-            </RefItem>
-            <RefItem leftIcon={<Icon.ExternalLink />} href="https://developer.mozilla.org/en-US/docs/Web/API">
-              Web APIs (MDN)
-            </RefItem>
+            <LinkItem leftIcon={<Icon.Code />} href="https://github.com/farzadgo/adrift">
+              <h3>Source code repository</h3>
+            </LinkItem>
+            <LinkItem leftIcon={<Icon.ExternalLink />} href="http://digitalmedia-bremen.de/">
+              <h3>Digital Media Bremen</h3>
+            </LinkItem>
+            <LinkItem leftIcon={<Icon.ExternalLink />} href="https://www.hfk2020.de/">
+              <h3>University of the Arts Bremen</h3>
+            </LinkItem>
+            <LinkItem leftIcon={<Icon.File />} href="http://tbook.constantvzw.org/wp-content/derivedebord.pdf">
+              <h3>Theory of the Dérive (PDF)</h3>
+            </LinkItem>
+            <LinkItem leftIcon={<Icon.BookOpen />} href="https://en.wikipedia.org/wiki/D%C3%A9rive">
+              <h3>Dérive (Wiki)</h3>
+            </LinkItem>
+            <LinkItem leftIcon={<Icon.BookOpen />} href="https://en.wikipedia.org/wiki/Psychogeography">
+              <h3>Psychogeography (Wiki)</h3>
+            </LinkItem>
+            <LinkItem leftIcon={<Icon.ExternalLink />} href="https://www.cddc.vt.edu/sionline/">
+              <h3>Situationist International Online</h3>
+            </LinkItem>
+            <LinkItem leftIcon={<Icon.ExternalLink />} href="https://developer.mozilla.org/en-US/docs/Web/API">
+              <h3>Web APIs (MDN)</h3>
+            </LinkItem>
           </div>
         </CSSTransition>
       </div>

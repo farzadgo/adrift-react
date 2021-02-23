@@ -77,7 +77,8 @@ const Start = ({ setToggle, addDrift }) => {
         type="button"
         className="btn-big lost-btn"
         onClick={handleClick}
-        disabled={!inputValue ? true : false}>
+        disabled={!inputValue ? true : false}
+      >
         Get Lost
       </button>
     );
@@ -85,8 +86,8 @@ const Start = ({ setToggle, addDrift }) => {
   
   const SampleBtn = () => {
     const iconProps = {
-      color: '#2a2726',
-      size: 32,
+      color: '#2A2726',
+      size: 24,
       strokeWidth: 1
     }
     const handlePaste = () => {

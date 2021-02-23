@@ -15,7 +15,7 @@
 /* ------------- MENU ITEMS ------------- */
 .menu-item {
   display: flex;
-  height: calc(var(--hdr-h) * 0.7);
+  height: calc(var(--hdr-h) * 0.9);
   align-items: center;
   padding: var(--space-one);
   font-size: var(--md);
@@ -28,12 +28,13 @@
   height: var(--hdr-h);
 }
 .menu-item.link {
-  height: calc(var(--hdr-h) * 0.6);
+  height: calc(var(--hdr-h) * 0.8);
 }
 .menu-item.link a {
   display: flex;
   align-items: center;
-  padding-right: 10px;
+  width: 100%;
+  height: 100%;
 }
 /* ------------- MENU ICONS ------------- */
 .menu-item .icon-left {
@@ -46,31 +47,32 @@
 .menu-item .icon-left svg,
 .menu-item .icon-right svg {
   stroke-width: 1px;
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
 }
 .menu-item .icon-left svg {
   margin-right: 20px;
 }
 .menu-item.link .icon-left svg {
-  width: 28px;
-  height: 28px;
-  margin-left: 8px;
+  width: 24px;
+  height: 24px;
+  margin-left: 4px;
 }
 /* ------------- MENU CONTENT ------------- */
 .menu-content {
   padding: 0 var(--space-one);
   height: calc(100% - var(--hdr-h));
   overflow: auto;
-  font-size: var(--md);
+  font-family: var(--serif-font);
+  font-size: calc(var(--md) * 1.2);
   font-weight: 300;
 }
 .menu-content p {
-  line-height: 1.6em;
-  margin-bottom: var(--space-one);
+  line-height: 1.7em;
+  margin-bottom: calc(var(--space-one) * 1.6);
 }
 .menu-content .quote {
-  font-size: var(--sm);
+  font-size: calc(var(--sm) * 1.2);
   padding: 10px 15px;
   background-color: #3a3a3a;
   border-left: 5px solid #555555;

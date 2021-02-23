@@ -11,8 +11,8 @@
   background: none;
   border: none;
   cursor: pointer;
-  min-height: 48px;
-  min-width: 48px;
+  min-height: 40px;
+  min-width: 40px;
 }
 .header-btn.left {
   margin-right: auto;

@@ -11,7 +11,7 @@ const Header = ({ info, setToggle }) => {
   let headerTitle;
   const iconProps = {
     color: '#2A2726',
-    size: 36,
+    size: 28,
     strokeWidth: 1
   }
   const { driftId, stepIndex } = useParams();

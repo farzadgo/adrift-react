@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useHistory, Link } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import Header from './Header'
 import Loader from './Loader'
 import * as Icon from 'react-feather'
@@ -62,7 +62,7 @@ export default Overview
 const DeleteBtn = ({ id, deleteDrift }) => {
   const iconProps = {
     color: 'white',
-    size: 32,
+    size: 24,
     strokeWidth: 1
   }
   const history = useHistory();
@@ -109,21 +109,24 @@ const ProceedBtn = ({ id, completed }) => {
 
 
 const StepThumb = ({ id, index, step }) => {
+  const history = useHistory();
   const { orgDir, newDir, completed } = step;
   const iconProps = {
     color: '#2A2726',
-    size: 32,
+    size: 28,
     strokeWidth: 1
   }
+  const handleClick = () => {
+    history.push(`/${id}/${index + 1}`)
+  }
   return (
-    <div className="step-thumb">
+    <div className="step-thumb" onClick={completed.length ? handleClick : null }>
       <span className="step-thumb-item"> {orgDir} </span>
       <span className="step-thumb-item"> {newDir} </span>
-      <Link
-        to={`/${id}/${index + 1}`}
+      <div
         className={completed.length ? "step-thumb-arrow" : "step-thumb-arrow deactive"}>
         <Icon.ChevronRight {...iconProps}/>
-      </Link>
+      </div>
     </div>
   )
 }
