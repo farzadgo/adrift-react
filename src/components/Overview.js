@@ -119,13 +119,16 @@ const StepThumb = ({ id, index, step }) => {
   const handleClick = () => {
     history.push(`/${id}/${index + 1}`)
   }
+  
   return (
-    <div className="step-thumb" onClick={completed.length ? handleClick : null }>
+    <div
+      className={completed.length ? "step-thumb" : "step-thumb deactive"}
+      onClick={handleClick}
+    >
       <span className="step-thumb-item"> {orgDir} </span>
       <span className="step-thumb-item"> {newDir} </span>
-      <div
-        className={completed.length ? "step-thumb-arrow" : "step-thumb-arrow deactive"}>
-        <Icon.ChevronRight {...iconProps}/>
+      <div className="step-thumb-arrow">
+        <Icon.ChevronRight {...iconProps} />
       </div>
     </div>
   )

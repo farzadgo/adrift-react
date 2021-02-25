@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   background-color: var(--light);
-  padding: 10px var(--space-one);
+  padding: calc(var(--space-one) * 0.5) var(--space-one);
   margin-bottom: calc(var(--space-one) * 1.2);
   border: 2px solid var(--dark);
   box-shadow: 4px 4px 0 var(--dark);
@@ -22,6 +22,8 @@
   color: crimson;
 }
 .drift-thumb-arrow {
+  display: flex;
+  align-items: center;
   margin-left: auto;
 }
 /* ------------------------------------------ */

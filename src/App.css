@@ -8,9 +8,9 @@
   --dark: rgb(34, 31, 31);
   --blue: rgb(141, 182, 193);
   --speed: 500ms;
+  --space-one: 15px;
   --hdr-h: 60px;
   --btn-h: 50px;
-  --space-one: 15px;
   --lg: 1.3rem;
   --md: 1.0rem;
   --sm: 0.85rem;
@@ -102,7 +102,6 @@ button[disabled] > svg {
     --space-one: 20px;
     --hdr-h: 90px;
     --btn-h: 70px;
-    --space-one: 20px;
     --lg: 1.6rem;
     --md: 1.2rem;
     --sm: 1.1rem;

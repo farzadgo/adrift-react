@@ -39,6 +39,8 @@ const Instructions = () => {
   return (
     <>
       <Swiper
+        spaceBetween={40}
+        slidesPerView={1.4}
         tag='section'
         wrapperTag='ul'
         pagination={{ type: 'progressbar' }}

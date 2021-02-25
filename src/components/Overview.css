@@ -8,6 +8,13 @@
   border-bottom: 1px dotted gray;
   cursor: pointer;
 }
+.step-thumb.deactive {
+  pointer-events: none;
+}
+.step-thumb.deactive .step-thumb-arrow {
+  pointer-events: none;
+  opacity: 0.1;
+}
 .step-thumb-item {
   font-size: var(--sm);
   width: 50%;
@@ -24,10 +31,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.step-thumb-arrow.deactive {
-  pointer-events: none;
-  opacity: 0.1;
 }
 /* ------------------------------------------ */
 .btn-big.proceed-btn {
