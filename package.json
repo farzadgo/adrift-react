@@ -12,11 +12,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-transition-group": "^4.4.1",
-    "swiper": "^6.4.15",
-    "workbox-core": "^6.1.1",
-    "workbox-expiration": "^6.1.1",
-    "workbox-precaching": "^6.1.1",
-    "workbox-strategies": "^6.1.1"
+    "swiper": "^6.4.15"
   },
   "homepage": "https://farzadgo.github.io/adrift-react/",
   "scripts": {
