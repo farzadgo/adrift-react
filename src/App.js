@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Route, HashRouter as Router, Switch } from 'react-router-dom'
 import Dexie from 'dexie'
 import DriftList from "./components/DriftList"
 import Start from "./components/Start"
@@ -102,7 +102,7 @@ const App = () => {
 
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <div
         className="app-container"
         style={winSize.width < 620 ? {height: `${winSize.height}px`} : {height: `${winSize.height - 90}px`}}>

@@ -1,7 +1,7 @@
 {
   "short_name": "Adrift",
   "name": "Adrift web app",
-  "description": "Adrift is web application written in React. Adrift deconstructs Google Maps direction text and by doing so it offers a new set of directions based on the first one, thus it enables the performers to get lost in their very own environment.",
+  "description": "Adrift deconstructs Google Maps direction text and by doing so it offers a new set of directions to get lost in the city.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -39,7 +39,7 @@
       "sizes": "341x341"
     }
   ],
-  "start_url": "/",
+  "start_url": "/adrift-react/",
   "display": "standalone",
   "theme_color": "#2A2726",
   "background_color": "#D8DADC",

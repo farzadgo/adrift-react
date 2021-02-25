@@ -13,7 +13,6 @@ const Step = ({ drifts, setToggle, addRecording, deleteRecording, checkStep }) =
   const [records, setRecords] = useState([]);
   const [stepsLength, setStepsLength] = useState(0);
   const [direction, setDirection] = useState('');
-  
   const [btnStatus, setBtnStatus] = useState('set');
 
   const info = {
@@ -136,6 +135,7 @@ const NextBtn = ({ stepIndex, driftId , stepsLength, checkStep, btnStatus }) => 
 
 
 const Recorder = ({ driftId, stepIndex, addRecording, setBtnStatus }) => {
+  
   const handleBlob = (url, blob) => {
     addRecording(blob, driftId, stepIndex);
   }
