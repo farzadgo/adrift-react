@@ -102,7 +102,7 @@ const App = () => {
 
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div
         className="app-container"
         style={winSize.width < 620 ? {height: `${winSize.height}px`} : {height: `${winSize.height - 90}px`}}>
