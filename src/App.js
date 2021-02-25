@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Route, HashRouter as Router, Switch } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Dexie from 'dexie'
 import DriftList from "./components/DriftList"
 import Start from "./components/Start"
