@@ -2,11 +2,11 @@
   --main-font: 'Jost', 'Trebuchet MS', 'Helvetica',sans-serif;
   --code-font: 'Lekton', 'Consolas', 'Menlo', monospace;
   --serif-font: 'Bitter', serif;
-  --pink: rgb(192, 104, 164);
-  --pink-dark: rgb(167, 67, 135);
-  --light: rgb(243, 241, 241);
-  --dark: rgb(34, 31, 31);
-  --blue: rgb(141, 182, 193);
+  --pink: #c068a4;
+  --pink-dark: #a74387;
+  --light: #f3f1f1;
+  --dark: #221f1f;
+  --blue: #8db6c1;
   --speed: 500ms;
   --space-one: 15px;
   --hdr-h: 60px;

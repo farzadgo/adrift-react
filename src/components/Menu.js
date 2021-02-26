@@ -131,7 +131,7 @@ const Menu = ({ setToggle }) => {
             </MenuItem>
             <div className="menu-content">
               <p>
-                Adrift deconstructs Google Maps direction text** and by doing so it offers a new set of directions based on the original one, thus it enables the performers to get lost in their very own environment. "Getting lost" refers to the perception of the urban fabric in a different way than what we usually experienc in <b>everyday life</b>.
+                Adrift deconstructs Google Maps direction text** and by doing so it offers a new set of directions based on the original one, thus it enables the performers to get lost in their very own environment. "Getting lost" refers to the perception of the urban fabric in a different way than what we usually experience in <b>everyday life</b>.
               </p>
               <p>
                 During the walk (or run, play, etc.) to nowhere, the performers are being asked a set of questions regarding the surrounding and offered the opportunity to record the answers in the form of conversations between them, hoping to initiate another level of observation and meaning-making through the act of walking and mapping.
@@ -179,7 +179,7 @@ const Menu = ({ setToggle }) => {
             </MenuItem>
             <div className="menu-content">
               <p>
-                Adrift is a progressive web application (PWA). This version is competely written in React (using Hooks and Router). The app is deployed on Github Pages and runs a service worker.
+                Adrift is a progressive web application (PWA). This version is completely written in React (using Hooks and Router). The app is deployed on GitHub Pages and runs a service worker.
               </p>
               <p className="quote">
                 This app uses MediaStream Recording API (for voice recording), which is supported on most browsers by default but iOS devices. <i>IOS 14.3+ supports it by default (on earlier versions it needs to be enabled in Experimental Features).</i>
@@ -188,7 +188,7 @@ const Menu = ({ setToggle }) => {
                 The application uses <b>client-side storage</b> to create, read, update, and delete (CRUD) data only on user's computer (not on cloud services). Dexie.js library is used as the wrapper for the <b>IndexedDB</b>.
               </p>
               <p>
-                For more info see Github repository.
+                For more info see GitHub repository.
               </p>
             </div>
           </div>
