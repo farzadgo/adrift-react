@@ -179,13 +179,16 @@ const Menu = ({ setToggle }) => {
             </MenuItem>
             <div className="menu-content">
               <p>
-                Adrift is a front-end single page application (SPA) written in vanilla <b>Javascript</b>. 
+                Adrift is a progressive web application (PWA). This version is competely written in React (using Hooks and Router). The app is deployed on Github Pages and runs a service worker.
+              </p>
+              <p className="quote">
+                This app uses MediaStream Recording API (for voice recording), which is supported on most browsers by default but iOS devices. <i>IOS 14.3+ supports it by default (on earlier versions it needs to be enabled in Experimental Features).</i>
               </p>
               <p>
-                Adrift uses modern web API such as MediaStream Recording API and Clipboard API, which currently are <b>not supported by iOS devices</b>.
+                The application uses <b>client-side storage</b> to create, read, update, and delete (CRUD) data only on user's computer (not on cloud services). Dexie.js library is used as the wrapper for the <b>IndexedDB</b>.
               </p>
               <p>
-                The applications data storage is sessionStorage, which means after the page is reload the data will be cleaned. A frequent method for saving data (including media files) is to use cloud services, yet regarding <b>data privacy</b> issues it is prefered to use <b>client-side storage</b>. Hence, it is possible to save the drifts by saving the recordings and to do so by tapping on specifed download buttons.
+                For more info see Github repository.
               </p>
             </div>
           </div>
@@ -201,7 +204,7 @@ const Menu = ({ setToggle }) => {
             <MenuItem goToMenu="main" leftIcon={<Icon.ChevronLeft />} title>
               <h2>Links</h2>
             </MenuItem>
-            <LinkItem leftIcon={<Icon.Code />} href="https://github.com/farzadgo/adrift">
+            <LinkItem leftIcon={<Icon.GitHub />} href="https://github.com/farzadgo/adrift-react">
               <h3>Source code repository</h3>
             </LinkItem>
             <LinkItem leftIcon={<Icon.ExternalLink />} href="http://digitalmedia-bremen.de/">
@@ -221,9 +224,6 @@ const Menu = ({ setToggle }) => {
             </LinkItem>
             <LinkItem leftIcon={<Icon.ExternalLink />} href="https://www.cddc.vt.edu/sionline/">
               <h3>Situationist International Online</h3>
-            </LinkItem>
-            <LinkItem leftIcon={<Icon.ExternalLink />} href="https://developer.mozilla.org/en-US/docs/Web/API">
-              <h3>Web APIs (MDN)</h3>
             </LinkItem>
           </div>
         </CSSTransition>
