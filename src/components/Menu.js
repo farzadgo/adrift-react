@@ -207,6 +207,9 @@ const Menu = ({ setToggle }) => {
             <LinkItem leftIcon={<Icon.GitHub />} href="https://github.com/farzadgo/adrift-react">
               <h3>Source code repository</h3>
             </LinkItem>
+            <LinkItem leftIcon={<Icon.ExternalLink />} href="https://thedynamicarchive.net/component/how-to-get-lost-in-the-neighborhood">
+              <h3>Methodology (The Dynamic Archive)</h3>
+            </LinkItem>
             <LinkItem leftIcon={<Icon.ExternalLink />} href="http://digitalmedia-bremen.de/">
               <h3>Digital Media Bremen</h3>
             </LinkItem>
