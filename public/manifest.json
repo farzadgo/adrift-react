@@ -1,6 +1,6 @@
 {
   "short_name": "Adrift",
-  "name": "Adrift web app",
+  "name": "Adrift walking app",
   "description": "Adrift deconstructs Google Maps direction text and by doing so it offers a new set of directions to get lost in the city.",
   "icons": [
     {
@@ -9,27 +9,22 @@
       "type": "image/x-icon"
     },
     {
-      "src": "icons/favicon-32x32.png",
+      "src": "icons/adrift_32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "icons/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/adrift_512x512.png",
+      "src": "icons/adrift_512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "icons/adrift_192x192.png",
+      "src": "icons/adrift_192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icons/adrift_128x128.png",
+      "src": "icons/adrift_128.png",
       "sizes": "128x128",
       "type": "image/png"
     },

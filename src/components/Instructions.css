@@ -1,6 +1,5 @@
 .swiper-slide {
-  left: 50%;
-  transform: translateX(-50%);
+  left: 18%;
   top: calc(var(--space-one) * 0.5);
   list-style: none;
 }
@@ -24,4 +23,7 @@
 .swiper-pagination-progressbar
 .swiper-pagination-progressbar-fill {
   background: var(--pink);
+}
+.swiper-container-android .swiper-slide {
+  transform: translateZ(10);
 }
