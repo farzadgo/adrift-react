@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Route, HashRouter as Router, Switch } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Dexie from 'dexie'
 import DriftList from "./components/DriftList"
 import Start from "./components/Start"
@@ -18,9 +18,7 @@ const App = () => {
 
   const [toggle, setToggle] = useState(false);
   const [drifts, setDrifts] = useState([]);
-  const [winSize, setWinSize] = useState({
-    height: window.innerHeight, width: window.innerWidth
-  });
+  const [winSize, setWinSize] = useState({ height: '', width: '' });
 
   const toggler = () => setToggle(prev => !prev);
 
@@ -79,10 +77,13 @@ const App = () => {
   // }
 
   const handleResize = () => {
-    setWinSize({
-      height: window.innerHeight,
-      width: window.innerWidth
-    });
+    setWinSize((prevState) => {
+      return {
+        ...prevState,
+        height: window.innerHeight,
+        width: window.innerWidth
+      }
+    })
   }
 
   useEffect(() => {
@@ -92,6 +93,13 @@ const App = () => {
       console.log('drifts from db fetched!');
     }
     getDrifts();
+
+    setWinSize({
+      ...winSize,
+      height: window.innerHeight,
+      width: window.innerWidth
+    });
+
     window.addEventListener('resize', handleResize);
     console.log('App rendering...');
     return () => {
