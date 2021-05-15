@@ -6,6 +6,10 @@ Adrift deconstructs Google Maps direction text** and by doing so it offers a new
 
 During the walk (or run, play, etc.) to nowhere, the performers are being asked a set of questions regarding the surrounding and offered the opportunity to record the answers in the form of conversations between them, hoping to initiate another level of observation and meaning-making through the act of walking and mapping.
 
+<br>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/23eaaa27-d296-45ed-bd85-8316aa1138ca/deploy-status)](https://app.netlify.com/sites/adriftapp/deploys)
+
 
 ## Repo of the earlier version
 
