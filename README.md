@@ -1,4 +1,4 @@
-# Adrift walking app
+# Adrift app
 
 __<a href="https://adrift.city/" target="_blank">Adrift</a>__ is an experimental and artistic research-based web application for **walking in the city**.
 
@@ -6,27 +6,27 @@ Adrift deconstructs Google Maps direction text** and by doing so it offers a new
 
 During the walk (or run, play, etc.) to nowhere, the performers are being asked a set of questions regarding the surrounding and offered the opportunity to record the answers in the form of conversations between them, hoping to initiate another level of observation and meaning-making through the act of walking and mapping.
 
-<br>
+<hr>
 
 ## Earlier version
 
-For more information visit the repository for the first version of the app [here](https://github.com/farzadgo/adrift-js).
+For more information visit the [repository](https://github.com/farzadgo/adrift-js) of the first version of the app.
 
+<hr>
 
 ## Development and contributions
 
-The app is built with <a href="https://create-react-app.dev/" target="_blank">React</a> and hosted with <a href="https://www.netlify.com/" target="_blank">Netlify</a>.
+The app is built with [React](https://create-react-app.dev/) and hosted with [Netlify](https://www.netlify.com/).
 
-<a href="https://app.netlify.com/sites/adriftapp/deploys" target="_blank">
-  <img src="https://api.netlify.com/api/v1/badges/23eaaa27-d296-45ed-bd85-8316aa1138ca/deploy-status" alt="Netlify Status" />
-</a>
+[![Netlify Status](https://api.netlify.com/api/v1/badges/23eaaa27-d296-45ed-bd85-8316aa1138ca/deploy-status)](https://app.netlify.com/sites/adriftapp/deploys)
 
 
 Unlike the earlier version which was developed in Vanilla JavaScript, this version is developed with React Hooks and uses more APIs and libraries, such as IndexedDB (Dexie.js), following the four basic operations of persistent storage **create, read, update, and delete** (CRUD).
 
 
-**For artistic/theoretical/experimental collaborations and dev contributions, such as implementing Google Maps JavaScript API for acquiring the Maps directions, please contact me.**
+### For artistic/theoretical/experimental collaborations and dev contributions, such as implementing Google Maps JavaScript API for acquiring the Maps directions, please contact me.
 
+<hr>
 
 ## Quick links for this version
 
