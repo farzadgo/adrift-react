@@ -1,6 +1,6 @@
 {
   "short_name": "Adrift",
-  "name": "Adrift",
+  "name": "Adrift walking app",
   "description": "Adrift deconstructs Google Maps direction text and by doing so it offers a new set of directions to get lost in the city.",
   "icons": [
     {
@@ -34,7 +34,7 @@
       "sizes": "148x148"
     }
   ],
-  "start_url": "/adrift-react/",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#221f1f",
   "background_color": "#000000",
