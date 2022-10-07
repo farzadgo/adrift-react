@@ -20,6 +20,6 @@ export const allQuestions = [
   'Listen, where does the sound come from?',
   'What is the temperature of the surface on the left?',
   'What is the temperature of the surface on the right?',
-  'Can you close you’re eyes and follow the way with eyes being closed?',
-  'Could there be a hidden garden around?'        
+  'Can you close youre eyes and follow the way with eyes being closed?',
+  'Could there be a hidden garden around?'
 ];
