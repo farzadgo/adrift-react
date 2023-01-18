@@ -36,7 +36,8 @@ const Header = ({ info, setToggle }) => {
         break;
       case 'Step':
         leftIcon = <Icon.ChevronLeft {...iconProps}/>;
-        headerTitle = length ? `Step ${stepIndex} / ${length}` : '';
+        // headerTitle = length ? `Step ${stepIndex} / ${length}` : '';
+        headerTitle = length ? `Step ${stepIndex}` : '';
         target = `/${driftId}`;
         break;
       default:

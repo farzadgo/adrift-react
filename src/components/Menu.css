@@ -22,7 +22,7 @@
   cursor: pointer;
 }
 .menu-item h3 {
-  font-weight: normal;
+  font-weight: 300;
 }
 .menu-item.title {
   height: var(--hdr-h);

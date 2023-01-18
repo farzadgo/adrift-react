@@ -48,7 +48,7 @@ const Step = ({ drifts, setToggle, addRecording, deleteRecording, checkStep }) =
       <Header info={info} setToggle={setToggle}/>
       {step ?
       <div className="main">
-        <div className="body">
+        <div className="body step">
 
           <div className="step-directions">
             <p className="step-item"> {direction} </p>
@@ -190,7 +190,7 @@ const Recorder = ({ driftId, stepIndex, addRecording, setBtnStatus }) => {
 const RecordThumb = ({ index, blob, deleteRecording, driftId, stepIndex }) => {
   const iconProps = {
     color: '#2A2726',
-    size: 28,
+    size: 24,
     strokeWidth: 1
   }
   const audioURL = URL.createObjectURL(blob);

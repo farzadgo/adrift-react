@@ -131,7 +131,7 @@ const Menu = ({ setToggle }) => {
             </MenuItem>
             <div className="menu-content">
               <p>
-                Adrift deconstructs Google Maps direction text** and by doing so it offers a new set of directions based on the original one, thus it enables the performers to get lost in their very own environment. "Getting lost" refers to the perception of the urban fabric in a different way than what we usually experience in <b>everyday life</b>.
+                Adrift deconstructs Google Maps directions text** and by doing so it offers a new set of directions based on the original one, thus it enables the performers to get lost in their very own environment. "Getting lost" refers to the perception of the urban fabric in a different way than what we usually experience in <b>everyday life</b>.
               </p>
               <p>
                 During the walk (or run, play, etc.) to nowhere, the performers are being asked a set of questions regarding the surrounding and offered the opportunity to record the answers in the form of conversations between them, hoping to initiate another level of observation and meaning-making through the act of walking and mapping.

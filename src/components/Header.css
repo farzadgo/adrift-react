@@ -26,4 +26,6 @@
 .header-title {
   margin: auto;
   font-size: var(--md);
+  font-weight: bold;
+  font-family: var(--code-font);
 }
