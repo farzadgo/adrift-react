@@ -22,7 +22,8 @@
   overflow: hidden;
 }
 .step-thumb-item:first-child {
-  color: crimson;
+  text-decoration: line-through;
+  text-decoration-color: crimson;
 }
 .step-thumb-item:nth-child(2) {
   padding-left: 0.6em;

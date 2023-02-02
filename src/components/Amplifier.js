@@ -19,8 +19,6 @@ const Amplifier = ({setToggle}) => {
     }
   }
 
-  console.log(stream);
-
   const stopAudio = () => {
     stream.getTracks().forEach(track => track.stop());
     setIsListening(false)
@@ -69,7 +67,6 @@ const Amplifier = ({setToggle}) => {
   
     return () => {
       console.log('unmounting Amplifier...');
-      console.log(stream);
     }
   }, [])
   
