@@ -26,6 +26,10 @@ const Header = ({ info, setToggle }) => {
         show = false;
         headerTitle = 'Your drifts';
         break;
+      case 'Ampliwalk':
+        leftIcon = <Icon.ChevronLeft {...iconProps}/>;
+        headerTitle = 'Amplified Walk';
+        break;
       case 'Start':
         leftIcon = <Icon.ChevronLeft {...iconProps}/>;
         headerTitle = 'Start here';

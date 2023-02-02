@@ -7,6 +7,7 @@ import Overview from "./components/Overview"
 import Step from "./components/Step"
 import Menu from "./components/Menu"
 import './App.css'
+import Amplifier from './components/Amplifier'
 
 
 const App = () => {
@@ -119,6 +120,11 @@ const App = () => {
           <Route path="/" exact>
             <DriftList
               drifts={drifts}
+              setToggle={toggler}
+            />
+          </Route>
+          <Route path="/ampliwalk" exact>
+            <Amplifier
               setToggle={toggler}
             />
           </Route>

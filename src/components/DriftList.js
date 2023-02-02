@@ -6,6 +6,8 @@ import './DriftList.css'
 
 
 const DriftList = ({ drifts, setToggle }) => {
+  const history = useHistory();
+
   const info = {
     title: 'DriftList'
   };
@@ -29,6 +31,12 @@ const DriftList = ({ drifts, setToggle }) => {
               <p> click + button to start </p>
             </div>
           }
+          <div className='ampliwalk' onClick={() => history.push('/ampliwalk')}>
+            {/* <Link to="/ampliwalk">
+              take an amplified walk
+            </Link> */}
+            take an amplified walk
+          </div>
         </div>
 
         <div className="buttons">
