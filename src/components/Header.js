@@ -26,9 +26,9 @@ const Header = ({ info, setToggle }) => {
         show = false;
         headerTitle = 'Your drifts';
         break;
-      case 'Ampliwalk':
+      case 'Audiowalk':
         leftIcon = <Icon.ChevronLeft {...iconProps}/>;
-        headerTitle = 'Amplified Walk';
+        headerTitle = 'Audio walk';
         break;
       case 'Start':
         leftIcon = <Icon.ChevronLeft {...iconProps}/>;

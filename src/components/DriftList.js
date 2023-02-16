@@ -31,11 +31,9 @@ const DriftList = ({ drifts, setToggle }) => {
               <p> click + button to start </p>
             </div>
           }
-          <div className='ampliwalk' onClick={() => history.push('/ampliwalk')}>
-            {/* <Link to="/ampliwalk">
-              take an amplified walk
-            </Link> */}
-            take an amplified walk
+          <div className='audiowalk' onClick={() => history.push('/audiowalk')}>
+            <p> TO RECALL WHAT IS ABSENT </p>
+            <p> for Tender Absence Glocal Class 2023 </p>
           </div>
         </div>
 

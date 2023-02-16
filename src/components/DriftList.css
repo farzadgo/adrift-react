@@ -29,45 +29,49 @@
 /* ------------------------------------------ */
 .drift-empty {
   font-size: var(--md);
-  position: relative;
+  position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   line-height: 2.4em;
+  width: 100%;
 }
-
-.ampliwalk {
-  position: relative;
-  top: 62%;
-  background-color: #1E90FF;
+/* ------------------------------------------ */
+.audiowalk {
+  background-color: rgb(47, 125, 180);
   cursor: pointer;
-  height: var(--btn-h);
+  padding: 15px 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   color: white;
   font-weight: bold;
-  font-size: 1.2em;
-	box-shadow: 0 0 0 0 rgba(30, 144, 255, 1);
-  margin: 0 40px;
+  font-size: 1.1em;
+	box-shadow: 0 0 0 0 rgba(47, 125, 180, 1);
 	transform: scale(1);
 	animation: pulse-black 2s infinite;
+}
+.audiowalk p:last-child {
+  font-size: 0.8em;
+  margin-top: 8px;
+  font-weight: normal;
 }
 
 @keyframes pulse-black {
 	0% {
 		transform: scale(0.99);
-		box-shadow: 0 0 0 0 rgba(30, 144, 255 0.7);
+		box-shadow: 0 0 0 0 rgba(47, 125, 180, 0.7);
 	}
 	
 	70% {
 		transform: scale(1);
-		box-shadow: 0 0 0 20px rgba(30, 144, 255, 0);
+		box-shadow: 0 0 0 20px rgba(47, 125, 180, 0);
 	}
 	
 	100% {
 		transform: scale(0.99);
-		box-shadow: 0 0 0 0 rgba(30, 144, 255, 0);
+		box-shadow: 0 0 0 0 rgba(47, 125, 180, 0);
 	}
 }

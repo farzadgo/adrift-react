@@ -5,9 +5,10 @@ import './Amplifier.css'
 const Amplifier = ({setToggle}) => {
 
   const info = {
-    title: 'Ampliwalk'
+    title: 'Audiowalk'
   }
 
+  /*
   const [stream, setStream] = useState(null)
   const [isListening, setIsListening] = useState(false)
 
@@ -62,6 +63,7 @@ const Amplifier = ({setToggle}) => {
     }
 
   }
+  */
 
   useEffect(() => {
   
@@ -75,7 +77,8 @@ const Amplifier = ({setToggle}) => {
       <Header info={info} setToggle={setToggle}/>
       <div className="main">
         <div className='listen'>
-          <button onClick={handleListening} > {isListening ? 'stop' : 'listen'} </button>
+          {/* <button onClick={handleListening} > {isListening ? 'stop' : 'listen'} </button> */}
+          <p> soon will be available </p>
         </div>
       </div>
     </>

@@ -123,7 +123,7 @@ const App = () => {
               setToggle={toggler}
             />
           </Route>
-          <Route path="/ampliwalk" exact>
+          <Route path="/audiowalk" exact>
             <Amplifier
               setToggle={toggler}
             />

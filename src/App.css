@@ -89,7 +89,7 @@ button[disabled] > svg {
   border: none;
   width: 100%;
   height: var(--btn-h);
-  border-radius: calc(var(--btn-h) * 0.5);
+  /* border-radius: calc(var(--btn-h) * 0.5); */
   font-family: var(--main-font);
   font-size: var(--lg);
   background-color: var(--dark);
