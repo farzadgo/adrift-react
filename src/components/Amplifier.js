@@ -11,11 +11,11 @@ const Amplifier = ({setToggle}) => {
 
   const pageData = [
     {
-      BODY: 'Play this audio indoors, before leaving your home/workspace or starting point. After the audio finishes click on next',
+      BODY: 'Play this audio indoors, before leaving your home/workspace or starting point. After the audio finishes click on next.',
       AUDIO_URL: 'https://cloud.disorient.xyz/s/GEeMr4x8jTkfHD9/download/to-recall_part-1.mp3'
     },
     {
-      BODY: 'After getting ready play this audio and start the drift',
+      BODY: 'After getting ready play this audio and start the drift.',
       AUDIO_URL: 'https://cloud.disorient.xyz/s/jwPCFzDBwKdL4ns/download/to-recall_part-2.mp3'
     }
   ]
@@ -117,6 +117,7 @@ const Amplifier = ({setToggle}) => {
         <div className='body audio'>
           <h3 className='audio-title'> Part {pageNo === 0 ? '1' : '2'}</h3>
           <p className='audio-description'> {body} </p>
+          <p> Use your headphones! </p>
           <audio
             className='audio-player'
             src={url}
