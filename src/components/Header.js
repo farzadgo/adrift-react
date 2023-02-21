@@ -28,7 +28,7 @@ const Header = ({ info, setToggle }) => {
         break;
       case 'Audiowalk':
         leftIcon = <Icon.ChevronLeft {...iconProps}/>;
-        headerTitle = 'Audio walk';
+        headerTitle = 'to recall what is absent';
         break;
       case 'Start':
         leftIcon = <Icon.ChevronLeft {...iconProps}/>;

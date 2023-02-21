@@ -2,11 +2,23 @@ import React, { useState, useEffect } from 'react'
 import Header from './Header'
 import './Amplifier.css'
 
+
 const Amplifier = ({setToggle}) => {
 
   const info = {
     title: 'Audiowalk'
   }
+
+  const pageData = [
+    {
+      BODY: 'Play this audio indoors, before leaving your home/workspace or starting point. After the audio finishes click on next',
+      AUDIO_URL: 'https://cloud.disorient.xyz/s/GEeMr4x8jTkfHD9/download/to-recall_part-1.mp3'
+    },
+    {
+      BODY: 'After getting ready play this audio and start the drift',
+      AUDIO_URL: 'https://cloud.disorient.xyz/s/jwPCFzDBwKdL4ns/download/to-recall_part-2.mp3'
+    }
+  ]
 
   /*
   const [stream, setStream] = useState(null)
@@ -65,21 +77,61 @@ const Amplifier = ({setToggle}) => {
   }
   */
 
+  const [pageNo, setPagaNo] = useState(0)
+  const [body, setBody] = useState('')
+  const [url, setUrl] = useState('')
+
+  const setData = () => {
+    if (pageNo === 0) {
+      setBody(pageData[0].BODY)
+      setUrl(pageData[0].AUDIO_URL)
+    }
+    if (pageNo === 1) {
+      setBody(pageData[1].BODY)
+      setUrl(pageData[1].AUDIO_URL)
+    }
+  }
+
+  const handleClick = () => {
+    if (pageNo === 0) {
+      setPagaNo(1)
+    } else {
+      setPagaNo(0)
+    }
+  }
+
+
   useEffect(() => {
+    setData();
   
     return () => {
       console.log('unmounting Amplifier...');
     }
-  }, [])
+  }, [pageNo])
   
   return (
     <>
       <Header info={info} setToggle={setToggle}/>
-      <div className="main">
-        <div className='listen'>
-          {/* <button onClick={handleListening} > {isListening ? 'stop' : 'listen'} </button> */}
-          <p> soon will be available </p>
+      <div className='main'>
+
+        <div className='body audio'>
+          <h3 className='audio-title'> Part {pageNo === 0 ? '1' : '2'}</h3>
+          <p className='audio-description'> {body} </p>
+          <audio
+            className='audio-player'
+            src={url}
+            controls
+            controlsList='nodownload'>  
+          </audio>
         </div>
+
+        <div className='buttons'>
+          {/* <button onClick={handleListening} > {isListening ? 'stop' : 'listen'} </button> */}
+          <button type="button" className="btn-big" onClick={handleClick}>
+            {pageNo === 0 ? 'Next' : 'Back'}
+          </button>
+        </div>
+
       </div>
     </>
   )

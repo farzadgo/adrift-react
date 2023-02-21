@@ -29,17 +29,17 @@
 /* ------------------------------------------ */
 .drift-empty {
   font-size: var(--md);
-  position: absolute;
+  position: relative;
+  /* width: 100%; */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   line-height: 2.4em;
-  width: 100%;
 }
 /* ------------------------------------------ */
 .audiowalk {
-  background-color: rgb(47, 125, 180);
+  background-color: rgb(214, 90, 0);
   cursor: pointer;
   padding: 15px 0;
   display: flex;
@@ -49,7 +49,7 @@
   color: white;
   font-weight: bold;
   font-size: 1.1em;
-	box-shadow: 0 0 0 0 rgba(47, 125, 180, 1);
+	box-shadow: 0 0 0 0 rgba(214, 90, 0, 1);
 	transform: scale(1);
 	animation: pulse-black 2s infinite;
 }
@@ -62,16 +62,16 @@
 @keyframes pulse-black {
 	0% {
 		transform: scale(0.99);
-		box-shadow: 0 0 0 0 rgba(47, 125, 180, 0.7);
+		box-shadow: 0 0 0 0 rgba(214, 90, 0, 0.7);
 	}
 	
 	70% {
 		transform: scale(1);
-		box-shadow: 0 0 0 20px rgba(47, 125, 180, 0);
+		box-shadow: 0 0 0 20px rgba(214, 90, 0, 0);
 	}
 	
 	100% {
 		transform: scale(0.99);
-		box-shadow: 0 0 0 0 rgba(47, 125, 180, 0);
+		box-shadow: 0 0 0 0 rgba(214, 90, 0, 0);
 	}
 }
